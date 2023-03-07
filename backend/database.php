@@ -46,13 +46,13 @@
             while($row = $result->fetch_assoc()){
                 if($teszt1 == 3){
                     $product .= "
-                    <a href=\"http://localhost/0.3.0/layout/product.php?idTermek=$row[ID]\" class=\"col-sm-12 col-md-6 col-lg-3 igen m-1\"><div>$row[nev]</div></a>
+                    <a href=\"http://localhost/ProjectH/view/product.php?idTermek=$row[ID]\" class=\"col-sm-12 col-md-6 col-lg-3 igen m-1\"><div>$row[nev]</div></a>
                     </div><div class=\"row\">";
                     $teszt1 = 0;
                     $tt = $row['nev'];
                     }
                 else{
-                    $product .= "<a href=\"http://localhost/0.3.0/layout/product.php?idTermek=$row[ID]\" class=\"col-sm-12 col-md-6 col-lg-3 igen m-1\"><div>$row[nev]</div></a>";
+                    $product .= "<a href=\"http://localhost/ProjectH/view/product.php?idTermek=$row[ID]\" class=\"col-sm-12 col-md-6 col-lg-3 igen m-1\"><div>$row[nev]</div></a>";
                     $tt = $row['nev'];
                     $teszt1++;
                 }
@@ -61,4 +61,5 @@
              return $product;
         }
     }
+    
 }?>
