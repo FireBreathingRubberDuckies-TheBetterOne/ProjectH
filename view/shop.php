@@ -8,7 +8,7 @@
 ?>
 <!DOCTYPE html>
 <html>
-<?php require_once (__ROOT__."\backend\head.php");?>
+<?php require_once (__ROOT__."\layout\head.php");?>
 <body>
     <?php require_once __ROOT__."\layout\menu.php";?>
     <div id="main">
