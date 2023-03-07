@@ -2,7 +2,6 @@
 <?php
     define('__ROOT__', dirname(dirname(__FILE__)));
     require_once (__ROOT__."\backend\database.php");
-    $db =  new Database();
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,7 +9,9 @@
 <body>
     <?php
     require_once (__ROOT__."\layout\menu.php");
-    require_once (__ROOT__."\layout\selectedProduct.php");
+    require_once (__ROOT__."\backend\selectedProduct.php");
+    $hh = new SelectedProduct();
+    echo $hh->productLoader($_GET['idTermek']);
     ?>
 </body>
 </html>

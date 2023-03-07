@@ -2,7 +2,6 @@
 <?php
     define('__ROOT__', dirname(dirname(__FILE__)));
     require_once (__ROOT__."\backend\database.php");
-    $db =  new Database();
     $searcd = isset($_GET['prod'])?$_GET['prod']:null;
 
 ?>
