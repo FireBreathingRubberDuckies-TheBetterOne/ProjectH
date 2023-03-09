@@ -1,5 +1,5 @@
 <?php class Database{
-    private $conn = null;
+    public $conn = null;
     function __construct($host="localhost",$name = "root", $pass = "", $db = "termekek"){
         $this->conn = new mysqli($host, $name,$pass,$db);
         if($this->conn->connect_error){
@@ -69,20 +69,27 @@
         $sql = "SELECT nev FROM `fajta`";
         $result = $this->conn->query($sql);
         if($result->num_rows>0){
-           
-           
-            while($row = $result->fetch_assoc()){
-                
-                
+            while($row = $result->fetch_assoc()){     
                     echo "<option>".$row['nev']."</option>";
-                
-                
-
             }
-            
-            
-            
-        }
-        
+        }    
     }
+    function feltoltes($dropos,$nev,$kep,$ar,$elerheto,$kedvezmeny,$mennyiseg)
+    {
+        
+        $sql="SELECT fajtid FROM `fajta` WHERE nev=\"$dropos\"";
+        $result = $this->conn->query($sql);
+        if($result->num_rows>0){
+            while($row = $result->fetch_assoc()){     
+                    $dropos=$row["fajtid"];
+            }
+        }
+
+        $sql="INSERT INTO `termekek2`(`fajtid`, `nev`, `kep`, `ar`, `elerheto`, `kedvezmeny`, `mennyiseg`) VALUES (?,?,?,?,?,?,?)";
+        
+        $statement = $this->conn->prepare($sql);
+        $statement->bind_param('sssssss', $dropos,$nev,$kep,$ar,$elerheto,$kedvezmeny,$mennyiseg);
+        $current_id = $statement->execute() or die("<b>Error:</b> Problem on Image Insert<br/>");
+    }
+
 }?>
