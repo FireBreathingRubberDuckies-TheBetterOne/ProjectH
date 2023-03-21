@@ -24,7 +24,10 @@ require_once "menu.php";?>
         Ára
         <input type="text" name="ar" id="">
         Elérhető e
-        <input type="checkbox" name="elerhetoseg" id="">
+        <select name="igennem" id="">
+    <option value="">igen</option>
+    <option value="">nem</option>
+ </select>
         Kedvezmeny
         <input type="text" name="kedvezmeny" id="">
         Mennyiseg
@@ -38,12 +41,12 @@ require_once "menu.php";?>
     $binary=file_get_contents($_FILES["kep"]["tmp_name"]);
     $nev=$_POST["nev"];
     $ar=$_POST["ar"];
-    $elerheto=$_POST["elerhetoseg"];
-    if($elerheto="on")
-    {$elerheto=0;}
+    $elerheto=$_POST["igennem"];
+    if($elerheto="igen")
+    {$elerheto=1;}
     else 
     {
-        $elerheto=1;}
+        $elerheto=0;}
     $kedvezmeny=$_POST["kedvezmeny"];
     $mennyiseg=$_POST["mennyiseg"];
     $data->__construct();
@@ -51,6 +54,7 @@ require_once "menu.php";?>
 
     }
     ?>
+
 
 </body>
 </html>
