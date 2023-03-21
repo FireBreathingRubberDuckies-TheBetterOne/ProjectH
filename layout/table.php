@@ -19,6 +19,7 @@ require_once "menu.php";?>
         $data->__construct();
         $data->tablebe();
         ?>
+        <a href="adatb.php"><button>Hozzáadás</button></a>
     </table>
     
     
