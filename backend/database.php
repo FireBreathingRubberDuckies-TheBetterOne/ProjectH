@@ -7,6 +7,13 @@
             die();
         }
     }
+    function __construct2($host="localhost",$name = "root", $pass = "", $db = "felhasznalok"){
+        $this->conn = new mysqli($host, $name,$pass,$db);
+        if($this->conn->connect_error){
+            echo "<script>alarm(\"A kapcsolat nem volt sikerese!\");</script>";
+            die();
+        }
+    }
     function __destruct(){
         $this->conn->close();
     }
@@ -63,7 +70,7 @@
     }
 
 
-    function drop()
+    function termekfajta()
     {
         
         $sql = "SELECT nev FROM `fajta`";
@@ -74,7 +81,7 @@
             }
         }    
     }
-    function feltoltes($dropos,$nev,$kep,$ar,$elerheto,$kedvezmeny,$mennyiseg)
+    function termekfeltoltes($dropos,$nev,$kep,$ar,$elerheto,$kedvezmeny,$mennyiseg)
     {
         
         $sql="SELECT fajtid FROM `fajta` WHERE nev=\"$dropos\"";
@@ -92,7 +99,7 @@
         $current_id = $statement->execute() or die("<b>Error:</b> Problem on Insert<br/>");
     }
 
-    function tablebe()
+    function termeksor()
     {
         $sql = "SELECT * FROM `termekek2`;";
         $result = $this->conn->query($sql);
@@ -107,7 +114,7 @@
     <td>Mennyiség</td>
 </tr>";
             while($row = $result->fetch_assoc()){   
-                 echo "<form action='modosit.php' method='post'>";
+                 echo "<form action='termekmodositas.php' method='post'>";
                 echo "<tr style='border: 1px solid black'>";
                         
                           echo "<td style='border: 1px solid black ; padding:5px'>";
@@ -129,7 +136,7 @@
                           echo "</td>";
                           echo "<td style='border: 1px solid black ; padding:5px'>";
                           //echo $row['kedvezmeny'];
-                          echo "<input type='text' name='kedvezmeny' value='".$row['kedvezmeny']."'>";
+                          echo "<input type='text' name='kedvezmeny' value='".$row['kedvezmeny']."'>%";
                           echo "</td>";
                           echo "<td style='border: 1px solid black ; padding:5px'>";
                           //echo $row['mennyiseg'];
@@ -146,7 +153,7 @@
            echo "</table>";
         }
     }
-    function modosit()
+    function termekmodosit()
     {
         $termid=filter_input(INPUT_POST,"termid2");
         $nev=filter_input(INPUT_POST,"nev2");
@@ -159,17 +166,90 @@
         $elerheto=1;
     }
     else {$elerheto=0;}
-    var_dump($_POST);
+    
     $sql = "UPDATE `termekek2` SET `nev`=\"$nev\",`ar`=\"$ar\",`elerheto`=\"$elerheto\",`kedvezmeny`=\"$kedvezmeny\",`mennyiseg`=\"$mennyiseg\" WHERE termid=".$termid." ";
    $this->conn->query($sql);
         
 
     }
-    function delete()
+    function termekdelete()
     {  
         $termid=filter_input(INPUT_POST,"delete");
         
         $sql = "DELETE FROM `termekek2` WHERE `termid`=".$termid.";";
+        $this->conn->query($sql);
+        
+    }
+    function felhasznalosor()
+    {
+        $sql = " SELECT access.accessnev,access.accessid,user.felhasznaloid,user.nev,user.email
+        FROM `access` JOIN user ON(access.accessid=user.acccessid);";
+        $result = $this->conn->query($sql);
+        if($result->num_rows>0){
+            
+        echo "<table>";
+        echo "<tr>
+                
+                <td>Név</td>
+                <td>Email</td>
+                <td>Access</td>
+                </tr>";
+                while($row = $result->fetch_assoc()){
+                echo "<form action='felhasznalomodositas.php' method='post'><tr>
+                    <td><input type='text' name='nev' id='' value='".$row["nev"]."'></td>
+                    <td><input type='email' name='email' id='' value='".$row["email"]."'></td>
+                    <td><input type='text' name='accessnev' id='' value='".$row["accessnev"]."'></td>
+                    <td><button type='submit' name='modosit' value='".$row['felhasznaloid']."'>Módosít</button></td>
+                    <td><button type='submit'name='delete' value='".$row['felhasznaloid']."'>Törlés</button></td>
+                </tr>
+                </form>";
+                var_dump($row);
+                }
+                echo "</table>";
+                
+                
+        }
+    }
+    function felhasznaloaccess()
+    {
+        $sql = "SELECT * FROM `access`;";
+        $result = $this->conn->query($sql);
+        if($result->num_rows>0)
+        {
+                while($row = $result->fetch_assoc())
+                {
+                    echo "<option value='".$row["accessid"]."' name='drop'>".$row['accessnev']."</option>";
+                }   
+        }
+    }
+    function felhasznaloinsert()
+    { 
+        $accessid=$_POST['felhasznalodrop'];
+        $nev=$_POST['nev'];
+        $email=$_POST['email'];
+        $jelszokodolva=password_hash($_POST['jelszo'],PASSWORD_DEFAULT);
+        $sql="INSERT INTO `user`(`acccessid`, `nev`, `email`, `jelszo`) VALUES ('".$accessid."','".$nev."','".$email."','".$jelszokodolva."')";
+        $this->conn->query($sql);
+    }
+    function felhasznalomodosit()
+    {
+        $felhasznaloid=filter_input(INPUT_POST,"modosit");
+        $nev=filter_input(INPUT_POST,"nev");
+        $email=filter_input(INPUT_POST,"email");
+        
+    
+    
+    
+    $sql = "UPDATE `user` SET `nev`=\"$nev\",`email`=\"$email\", WHERE felhasznalo=".$felhasznaloid." ";
+   $this->conn->query($sql);
+        
+
+    }
+    function felhasznalodelete()
+    {  
+        $felahasznaloid=filter_input(INPUT_POST,"delete");
+        
+        $sql = "DELETE FROM `termekek2` WHERE `termid`=".$felhasznaloid.";";
         $this->conn->query($sql);
         
     }

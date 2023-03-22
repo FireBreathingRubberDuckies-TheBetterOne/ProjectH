@@ -30,7 +30,7 @@ require_once "menu.php";?>
     $kedvezmeny=filter_input(INPUT_POST,"kedvezmeny");
     $mennyiseg=filter_input(INPUT_POST,"mennyiseg");
     $termid=filter_input(INPUT_POST,"termid");
-    echo "<form action='modosit.php' method='post' name='formteszt'><table>
+    echo "<form action='termeksor.php' method='post' name='formteszt'><table>
         <tr>
             <td>Név</td>
             <td>Ár</td>
@@ -53,12 +53,12 @@ require_once "menu.php";?>
     if(isset($_POST['termid2']))
 {
     $db->__construct();
-    $db->modosit();
+    $db->termekmodosit();
 }    
 else if(isset($_POST['delete']))
 {
     $db->__construct();
-    $db->delete();
+    $db->termekdelete();
 }
     
      
@@ -66,5 +66,6 @@ else if(isset($_POST['delete']))
 
     ?>
     </form>
+    <a href="termeksor.php"><button>Vissza</button></a>
 </body>
 </html>

@@ -13,7 +13,7 @@ require_once "menu.php";?>
         $data=new Database();
         echo "<select name='dropdown'>";
         $data->__construct();
-        $data->drop();
+        $data->termekfajta();
         echo "</select>";
         
         ?>
@@ -25,8 +25,8 @@ require_once "menu.php";?>
         <input type="text" name="ar" id="">
         Elérhető e
         <select name="igennem" id="">
-    <option value="">igen</option>
-    <option value="">nem</option>
+    <option value="igen">igen</option>
+    <option value="nem">nem</option>
  </select>
         Kedvezmeny
         <input type="text" name="kedvezmeny" id="">
@@ -35,6 +35,7 @@ require_once "menu.php";?>
 
         <input type="submit" value="Feltöltés">
     </form>
+    <a href="termeksor.php"><button>Vissza</button></a>
     <?php
     if ( isset($_FILES['kep']['tmp_name']) ) {
     $dropos=$_POST["dropdown"];
@@ -42,15 +43,18 @@ require_once "menu.php";?>
     $nev=$_POST["nev"];
     $ar=$_POST["ar"];
     $elerheto=$_POST["igennem"];
-    if($elerheto="igen")
-    {$elerheto=1;}
+    var_dump($_POST);
+    if($elerheto=="nem")
+    {$elerheto=0;
+    }
     else 
     {
-        $elerheto=0;}
+        $elerheto=1;}
+
     $kedvezmeny=$_POST["kedvezmeny"];
     $mennyiseg=$_POST["mennyiseg"];
     $data->__construct();
-    $data->feltoltes($dropos,$nev,$binary,$ar,$elerheto,$kedvezmeny,$mennyiseg);
+    $data->termekfeltoltes($dropos,$nev,$binary,$ar,$elerheto,$kedvezmeny,$mennyiseg);
 
     }
     ?>
