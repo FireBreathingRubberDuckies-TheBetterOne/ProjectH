@@ -183,7 +183,7 @@
     function felhasznalosor()
     {
         $sql = " SELECT access.accessnev,access.accessid,user.felhasznaloid,user.nev,user.email
-        FROM `access` JOIN user ON(access.accessid=user.acccessid);";
+        FROM `access` JOIN user ON(access.accessid=user.accessid);";
         $result = $this->conn->query($sql);
         if($result->num_rows>0){
             
@@ -200,35 +200,46 @@
                     <td><input type='email' name='email' id='' value='".$row["email"]."'></td>
                     <td><input type='text' name='accessnev' id='' value='".$row["accessnev"]."'></td>
                     <td><button type='submit' name='modosit' value='".$row['felhasznaloid']."'>Módosít</button></td>
-                    <td><button type='submit'name='delete' value='".$row['felhasznaloid']."'>Törlés</button></td>
-                </tr>
+                    
+                    
+                    </tr>
                 </form>";
-                var_dump($row);
+                
                 }
                 echo "</table>";
                 
                 
         }
     }
-    function felhasznaloaccess()
+    function felhasznaloaccess($accessnev)
     {
+        echo "<select name='drop' id='' >" ;
         $sql = "SELECT * FROM `access`;";
         $result = $this->conn->query($sql);
         if($result->num_rows>0)
         {
                 while($row = $result->fetch_assoc())
-                {
-                    echo "<option value='".$row["accessid"]."' name='drop'>".$row['accessnev']."</option>";
+                {if($row["accessnev"]==$accessnev)
+                    {
+                        echo "<option value='".$row["accessid"]."' name='drop' selected>".$row['accessnev']."</option>";
+
+                    }
+                    else
+                    {
+                        echo "<option value='".$row["accessid"]."' name='drop'>".$row['accessnev']."</option>";
+
+                    }
                 }   
         }
+        echo "</select>";
     }
     function felhasznaloinsert()
     { 
-        $accessid=$_POST['felhasznalodrop'];
+        $accessid=$_POST['drop'];
         $nev=$_POST['nev'];
         $email=$_POST['email'];
         $jelszokodolva=password_hash($_POST['jelszo'],PASSWORD_DEFAULT);
-        $sql="INSERT INTO `user`(`acccessid`, `nev`, `email`, `jelszo`) VALUES ('".$accessid."','".$nev."','".$email."','".$jelszokodolva."')";
+        $sql="INSERT INTO `user`(`accessid`, `nev`, `email`, `jelszo`) VALUES ('".$accessid."','".$nev."','".$email."','".$jelszokodolva."')";
         $this->conn->query($sql);
     }
     function felhasznalomodosit()
@@ -236,20 +247,25 @@
         $felhasznaloid=filter_input(INPUT_POST,"modosit");
         $nev=filter_input(INPUT_POST,"nev");
         $email=filter_input(INPUT_POST,"email");
+        $drop=filter_input(INPUT_POST,"drop");
         
-    
-    
-    
-    $sql = "UPDATE `user` SET `nev`=\"$nev\",`email`=\"$email\", WHERE felhasznalo=".$felhasznaloid." ";
-   $this->conn->query($sql);
+        if(filter_input(INPUT_POST,"jelszo")!=""){
         
+        $jelszo=password_hash(filter_input(INPUT_POST,"jelszo"),PASSWORD_DEFAULT);
+            $sql = "UPDATE user SET nev=\"$nev\", email=\"$email\",jelszo=\"$jelszo\", accessid=\"$drop\" WHERE felhasznaloid= ".$felhasznaloid." ";
+            $this->conn->query($sql);    
+        }
+        else{
+            $sql = "UPDATE user SET nev=\"$nev\", email=\"$email\", accessid=\"$drop\" WHERE felhasznaloid= ".$felhasznaloid." ";
+            $this->conn->query($sql);
+        }
 
     }
     function felhasznalodelete()
     {  
-        $felahasznaloid=filter_input(INPUT_POST,"delete");
+        $felhasznaloid=filter_input(INPUT_POST,"torles");
         
-        $sql = "DELETE FROM `termekek2` WHERE `termid`=".$felhasznaloid.";";
+        $sql = "DELETE FROM `user` WHERE `felhasznaloid`=".$felhasznaloid." ";
         $this->conn->query($sql);
         
     }

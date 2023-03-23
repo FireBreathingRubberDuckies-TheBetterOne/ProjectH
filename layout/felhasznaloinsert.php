@@ -15,15 +15,15 @@
 <body>
     <form action="" method="post">
     
-    <select name="felhasznalodrop" id="">
+    
     <?php
     $data=new Database();
-    
+    $selected="selected";
     $data->__construct2();
-    $data->felhasznaloaccess();
+    $data->felhasznaloaccess($selected);
     
     ?>
-</select>
+
 <input type="text" name="nev" id="">
     <input type="email" name="email" id="">
     <input type="password" name="jelszo" id="">
@@ -32,6 +32,7 @@
 <?php
 if(isset($_POST['gomb']))
 {
+    
 $data->__construct2();
 $data->felhasznaloinsert();
 }
