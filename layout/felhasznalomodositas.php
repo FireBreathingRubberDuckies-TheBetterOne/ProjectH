@@ -31,7 +31,7 @@
         echo "<input type='text' name='nev' id='' value='".$nev."'>
         <input type='email' name='email' id='' value='".$email."'>
         <input type='password' name='jelszo' id='' >
-        <button type='submit' name='modosit' value='".$felhasznaloid."'>Módosít</button>
+        <button type='submit' name='modosit2' value='".$felhasznaloid."'>Módosít</button>
         <button type='submit' name='torles' value='".$felhasznaloid."'>Törlés</button>";
         
         
@@ -40,7 +40,7 @@
 
     </form>
     <?php
-     if(isset($_POST['modosit']))
+     if(isset($_POST['modosit2']))
      {
      $db->__construct2();
      $db->felhasznalomodosit();

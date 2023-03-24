@@ -244,7 +244,7 @@
     }
     function felhasznalomodosit()
     {
-        $felhasznaloid=filter_input(INPUT_POST,"modosit");
+        $felhasznaloid=filter_input(INPUT_POST,"modosit2");
         $nev=filter_input(INPUT_POST,"nev");
         $email=filter_input(INPUT_POST,"email");
         $drop=filter_input(INPUT_POST,"drop");
