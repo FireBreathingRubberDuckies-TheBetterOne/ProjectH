@@ -11,13 +11,11 @@
 }
 a{
     margin: 5px;
+    
 }
 #navBar a{
     text-decoration: none;
 }
 #teszt{
-    border: 1px solid black;
-}
-tr,td{
     border: 1px solid black;
 }
