@@ -1,5 +1,7 @@
-# 0.3.1.1
+# 0.3.1.2
 
-Mikor kiválasztunk egy terméket a shop-ban akkor menyit esz szeparált ablakot amin a termékről az adatbázisban lévő adatokat betölti (mostani esetben csak ID,név,szoveg és faj adatokat tölt be)
+A bevásárló kosár kiépítése elkezdődött
+    - kosárba még nem lehet berakni termékeke csak kiválasztani azt
+    - a metódus amivel lementüjük a termékekeket kezdetleges állapotban van
 
 

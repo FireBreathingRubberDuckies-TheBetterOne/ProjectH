@@ -12,6 +12,14 @@
     require_once (__ROOT__."\backend\selectedProduct.php");
     $hh = new SelectedProduct();
     echo $hh->productLoader($_GET['idTermek']);
-    ?>
+
+    $teszt = file_get_contents("http://localhost/ProjectH/backend/tempProductData.json");
+    $json = json_decode($teszt, true);
+    echo "Teszt rész";
+    echo '<pre>'.print_r($json, true).'</pre>';
+?>
+
+
+<script src="http://localhost/ProjectH/backend/scripts/localStorage.js"></script>
 </body>
 </html>
