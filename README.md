@@ -1,2 +1,7 @@
-# 0.3.0
-Eddig ez van kész az én részremről. A shop fülön van egy kereső (ha ot van mert ki lett kommentelve) az csak pontos szavakra képes rákeresni. Megpróbálom a dummy adatbázis is csatolni 
+# 0.3.1.2
+
+A bevásárló kosár kiépítése elkezdődött
+    - kosárba még nem lehet berakni termékeke csak kiválasztani azt
+    - a metódus amivel lementüjük a termékekeket kezdetleges állapotban van
+
+
