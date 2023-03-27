@@ -1,6 +1,6 @@
 <?php class Database{
     protected $conn = null;
-    function __construct($host="localhost",$name = "root", $pass = "", $db = "betoldtes"){
+    function __construct($host="localhost",$name = "root", $pass = "", $db = "termekek"){
         $this->conn = new mysqli($host, $name,$pass,$db);
         if($this->conn->connect_error){
             echo "<script>alarm(\"A kapcsolat nem volt sikerese!\");</script>";
