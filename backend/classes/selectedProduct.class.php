@@ -4,7 +4,7 @@ class SelectedProduct extends Database{
     function productLoader($termekID){
         $sql = null;
         $sql = "SELECT * FROM `users` WHERE `ID` = '$termekID'";
-        $result = $this->conn->query($sql);
+        $result = $this->connProduct->query($sql);
         $row = $result->fetch_assoc();
 
         file_put_contents(__ROOT__.'/backend/tempProductData.json', json_encode($row), FILE_USE_INCLUDE_PATH);
