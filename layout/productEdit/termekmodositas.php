@@ -4,20 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php define('__ROOT__', dirname(dirname(__FILE__))); 
-require_once "menu.php";?>
 
-<?php require_once __ROOT__."\backend\head.php";
-?>
-<link rel="stylesheet" href="..\css\style.css">
+
+<link rel="stylesheet" href="..\style\css\style.css">
 </head>
 <body>
-    <form action="" method="post">
+    <form action="#" method="post">
 
     
     <?php
-    require_once (__ROOT__."\backend\database.php");
-    $db =new Database();
+    require_once (__ROOT__."\backend\class.php");
+    
 
     
 
@@ -30,8 +27,11 @@ require_once "menu.php";?>
     $kedvezmeny=filter_input(INPUT_POST,"kedvezmeny");
     $mennyiseg=filter_input(INPUT_POST,"mennyiseg");
     $termid=filter_input(INPUT_POST,"termid");
-    echo "<form action='termeksor.php' method='post' name='formteszt'><table>
+    $fajtnev=filter_input(INPUT_POST,"fajtnev");
+    
+    echo "<table>
         <tr>
+            <td></td>
             <td>Név</td>
             <td>Ár</td>
             <td>Elérhető e</td>
@@ -40,6 +40,9 @@ require_once "menu.php";?>
             <td>'".$termid."'</td>
         </tr>
         <tr>
+     <td><select name'dropdown'>";
+$productsClass->termekfajta($fajtnev);
+  echo" </select></td>     
             <td><input type='text' name='nev2' id='' value='".$nev."'></td>
             <td><input type='text' name='ar2' id='' value='".$ar."'></td>
             <td><input type='text' name='elerheto2' id='' value='".$elerheto."'></td>
@@ -48,24 +51,15 @@ require_once "menu.php";?>
             <td><button type='submit' value='".$termid."' name='termid2'>Módosítás végrehajtása</button></td>
             <td><button type='submit' name='delete' value='".$termid."'>Törlés</button></td>
         </tr>
-    </table></form>";
+    </table>";
 
-    if(isset($_POST['termid2']))
-{
-    $db->__construct();
-    $db->termekmodosit();
-}    
-else if(isset($_POST['delete']))
-{
-    $db->__construct();
-    $db->termekdelete();
-}
+
     
      
     
 
     ?>
     </form>
-    <a href="termeksor.php"><button>Vissza</button></a>
+    
 </body>
 </html>
