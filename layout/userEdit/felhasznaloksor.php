@@ -16,7 +16,6 @@
     
 <?php
 $data=new Database();
-$data->__construct2();
 $data->felhasznalosor();
 ?>
 <a href="felhasznaloinsert.php"><button>Hozzáadás</button></a>

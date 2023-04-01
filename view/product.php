@@ -5,12 +5,6 @@
 ?>
 <!DOCTYPE html>
 <html>
-    if($post[11]=1){
-
-    } 
-    elsei if $post[11]=2
-
-    else
     <?php require_once (__ROOT__."\layout\head.php");?>
 <body>
     <?php

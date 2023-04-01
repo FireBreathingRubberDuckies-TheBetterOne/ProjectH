@@ -17,7 +17,7 @@ require_once "menu.php";?>
         require_once (__ROOT__."\backend\database.php");
         $data=new Database();
         $data->__construct();
-        $data->termeksor();
+        // $data->termeksor();
         ?>
         <a href="termekbeiras.php"><button>Hozzáadás</button></a>
     </table>
