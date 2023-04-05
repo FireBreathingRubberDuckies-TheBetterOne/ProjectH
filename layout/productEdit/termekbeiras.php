@@ -19,7 +19,8 @@
         <input type="text" name="ar" id="">
         Mennyiseg
         <input type="text" name="mennyiseg" id="">
-
+        Leírás
+        <input type="text" name="leiras" id="">
         <input type="submit" name="gomb2" value="Feltöltés">
     </form>
     <a href="termeksor.php"><button>Vissza</button></a>
