@@ -26,7 +26,7 @@
         $db=new Database();
         $db->__construct2();
         $db->felhasznaloaccess($accessnev);
-        var_dump($_POST);
+        
         
         echo "<input type='text' name='nev' id='' value='".$nev."'>
         <input type='email' name='email' id='' value='".$email."'>
