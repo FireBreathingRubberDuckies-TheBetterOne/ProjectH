@@ -43,7 +43,7 @@
         
             </tr>
     </table>";
-echo '<a href="termeksor.php"><button>Vissza</button></a>';
+
 
     
      
@@ -51,6 +51,6 @@ echo '<a href="termeksor.php"><button>Vissza</button></a>';
 
     ?>
     </form>
-    
+    <a href="termeksor.php"><button>Vissza</button></a>
 </body>
 </html>
