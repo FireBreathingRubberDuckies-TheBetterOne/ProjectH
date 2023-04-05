@@ -15,11 +15,11 @@ require_once __ROOT__."\layout\uniLayout\menu.php";?>
     <table >
         <?php
         require_once (__ROOT__."\backend\class.php");
-        if(isset($_POST['termid']))
+        if(isset($_POST['termekid']))
         {
             require_once "termekmodositas.php";
         }
-        elseif(isset($_POST['termid2']))
+        elseif(isset($_POST['termekid2']))
         {$productsClass->termekmodosit();
             echo "Sikeres módosítás \t
             <a href='termeksor.php'><button>Vissza</button></a>";
@@ -32,6 +32,12 @@ require_once __ROOT__."\layout\uniLayout\menu.php";?>
         elseif(isset($_POST['hozza']))
         {
             require_once "termekbeiras.php";
+        }
+        elseif(isset($_POST['gomb2']))
+        {
+            $productsClass->termekfeltoltes();
+            echo "Sikeres Hozzáadás \t
+            <a href='termeksor.php'><button>Vissza</button></a>";
         }
         else
         {

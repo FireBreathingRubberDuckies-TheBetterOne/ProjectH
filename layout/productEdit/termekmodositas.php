@@ -17,39 +17,28 @@
     
 
     
-
-    //6 hely kellene de 5 van mert nem raktam bele az igen nem drop ot az elerhetonek
     
     
-    $nev=filter_input(INPUT_POST,"nev");
+    $termnev=filter_input(INPUT_POST,"termnev");
     $ar=filter_input(INPUT_POST,"ar");
-    $elerheto=filter_input(INPUT_POST,"elerheto");
-    $kedvezmeny=filter_input(INPUT_POST,"kedvezmeny");
     $mennyiseg=filter_input(INPUT_POST,"mennyiseg");
-    $termid=filter_input(INPUT_POST,"termid");
-    $fajtnev=filter_input(INPUT_POST,"fajtnev");
+    $termekid=filter_input(INPUT_POST,"termekid");
+
     
     echo "<table>
         <tr>
-            <td></td>
             <td>Név</td>
             <td>Ár</td>
-            <td>Elérhető e</td>
-            <td>Kedvezmény</td>
             <td>Mennyiseg</td>
-            <td>'".$termid."'</td>
+            
         </tr>
         <tr>
-     <td><select name'dropdown'>";
-$productsClass->termekfajta($fajtnev);
-  echo" </select></td>     
-            <td><input type='text' name='nev2' id='' value='".$nev."'></td>
+       
+            <td><input type='text' name='termnev2' id='' value='".$termnev."'></td>
             <td><input type='text' name='ar2' id='' value='".$ar."'></td>
-            <td><input type='text' name='elerheto2' id='' value='".$elerheto."'></td>
-            <td><input type='text' name='kedvezmeny2' id='' value='".$kedvezmeny."'></td>
             <td><input type='text' name='mennyiseg2' id='' value='".$mennyiseg."'></td>
-            <td><button type='submit' value='".$termid."' name='termid2'>Módosítás végrehajtása</button></td>
-            <td><button type='submit' name='delete' value='".$termid."'>Törlés</button></td>
+            <td><button type='submit' value='".$termekid."' name='termekid2'>Módosítás végrehajtása</button></td>
+            <td><button type='submit' name='delete' value='".$termekid."'>Törlés</button></td>
         </tr>
     </table>";
 
