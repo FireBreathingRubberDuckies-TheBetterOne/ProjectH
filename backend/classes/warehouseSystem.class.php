@@ -8,15 +8,15 @@ class WarehouseSystem extends Database{
         $termnev=filter_input(INPUT_POST,"termnev");
         $ar=filter_input(INPUT_POST,"ar");
         $mennyiseg=filter_input(INPUT_POST,"mennyiseg");
-
-        $sql="INSERT INTO `termekek`(isokod,`termnev`,`ar`, `mennyiseg`) VALUES (?,?,?,?)";
+        $leiras=filter_input(INPUT_POST,"leiras");
+        $sql="INSERT INTO `termekek`(isokod,`termnev`,`ar`, `mennyiseg`,leiras) VALUES (?,?,?,?,?)";
         $statement = $this->connProduct->prepare($sql);
-        $statement->bind_param('ssss', $isokod,$termnev,$ar,$mennyiseg);
+        $statement->bind_param('sssss', $isokod,$termnev,$ar,$mennyiseg,$leiras);
         $current_id = $statement->execute() or die("<b>Error:</b> Problem on Insert<br/>");
     }
 
     function termeksor(){
-        $sql = "SELECT  termekid,termnev,ar,mennyiseg FROM `termekek` ;";
+        $sql = "SELECT  termekid,termnev,ar,mennyiseg,leiras FROM `termekek` ;";
         $result = $this->connProduct->query($sql);
         if($result->num_rows>0){
             
@@ -25,6 +25,7 @@ class WarehouseSystem extends Database{
                 <td>Név</td>
                 <td>Ár</td>
                 <td>Mennyiség</td>
+                <td>Leírás</td>
             </tr>";
             
             while($row = $result->fetch_assoc()){   
@@ -44,6 +45,10 @@ class WarehouseSystem extends Database{
                           
                           echo "<input type='text' name='mennyiseg' value='".$row['mennyiseg']."'>";
                           echo "</td>";
+                          echo "<td style='border: 1px solid black ; padding:5px'>";
+                          
+                          echo "<input type='text' name='leiras' value='".$row['leiras']."'>";
+                          echo "</td>";
                           echo "<td> <button type='submit' value='".$row['termekid']."' name='termekid'>Módosít</button></td>";
                           
                 echo "</tr>";
@@ -60,11 +65,12 @@ class WarehouseSystem extends Database{
         $termekid=filter_input(INPUT_POST,"termekid2");
         $termnev=filter_input(INPUT_POST,"termnev2");
         $ar=filter_input(INPUT_POST,"ar2");
+        $leiras=filter_input(INPUT_POST,"leiras2");
         $mennyiseg=filter_input(INPUT_POST,"mennyiseg2");
         
        
         
-        $sql = "UPDATE `termekek` SET  `termnev`=\"$termnev\",`ar`=\"$ar\",`mennyiseg`=\"$mennyiseg\" WHERE termekid=".$termekid." ";
+        $sql = "UPDATE `termekek` SET  `termnev`=\"$termnev\",`ar`=\"$ar\",`mennyiseg`=\"$mennyiseg\",`leiras`=\"$leiras\" WHERE termekid=".$termekid." ";
         $this->connProduct->query($sql);
     }
 
