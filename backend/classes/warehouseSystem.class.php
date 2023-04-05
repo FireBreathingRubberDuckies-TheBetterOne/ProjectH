@@ -16,12 +16,13 @@ class WarehouseSystem extends Database{
     }
 
     function termeksor(){
-        $sql = "SELECT  termekid,termnev,ar,mennyiseg,leiras FROM `termekek` ;";
+        $sql = "SELECT  * FROM `termekek` ;";
         $result = $this->connProduct->query($sql);
         if($result->num_rows>0){
             
                         echo "<table>";
                         echo "<tr>
+                        <td>IsoKód</td>
                 <td>Név</td>
                 <td>Ár</td>
                 <td>Mennyiség</td>
@@ -31,7 +32,10 @@ class WarehouseSystem extends Database{
             while($row = $result->fetch_assoc()){   
                  echo "<form action='#' method='post'>";
                 echo "<tr style='border: 1px solid black'>";
-                            
+                        echo "<td style='border: 1px solid black ; padding:5px'>";
+                                
+                        echo "<input type='text' name='ar' value='".$row['isokod']."'>";
+                        echo "</td>";
                           echo "<td style='border: 1px solid black ; padding:5px'>";
                           
                           echo "<input type='text' name='termnev' value='".$row['termnev']."'>";
