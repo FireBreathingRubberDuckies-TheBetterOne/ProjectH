@@ -34,10 +34,10 @@
         </tr>
         <tr>
        
-            <td><input type='text' name='termnev2' id='' value='".$termnev."'></td>
-            <td><input type='text' name='ar2' id='' value='".$ar."'></td>
-            <td><input type='text' name='mennyiseg2' id='' value='".$mennyiseg."'></td>
-            <td><input type='text' name='leiras2' id='' value='".$leiras."'></td>
+            <td><input type='text' name='termnev2' id='' value='".$termnev."' required></td>
+            <td><input type='number' name='ar2' id='' value='".$ar."' required></td>
+            <td><input type='number' name='mennyiseg2' id='' value='".$mennyiseg."' required></td>
+            <td><input type='text' name='leiras2' id='' value='".$leiras."' required></td>
             <td><button type='submit' value='".$termekid."' name='termekid2'>Módosítás végrehajtása</button></td>
             <td><button type='submit' name='delete' value='".$termekid."'>Törlés</button></td>
         

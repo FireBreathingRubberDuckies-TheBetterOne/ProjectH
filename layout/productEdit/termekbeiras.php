@@ -12,15 +12,15 @@
         
         ?>
         Nev
-        <input type="text" name="termnev" id="">
+        <input type="text" name="termnev" id="" required>
         Isokod
-        <input type="text" name="isokod" id="">
+        <input type="text" name="isokod" id="" required>
         Ára
-        <input type="text" name="ar" id="">
+        <input type="number" name="ar" id="" required>
         Mennyiseg
-        <input type="text" name="mennyiseg" id="">
+        <input type="number" name="mennyiseg" id="" required>
         Leírás
-        <input type="text" name="leiras" id="">
+        <input type="text" name="leiras" id="" required>
         <input type="submit" name="gomb2" value="Feltöltés">
     </form>
     <a href="termeksor.php"><button>Vissza</button></a>
