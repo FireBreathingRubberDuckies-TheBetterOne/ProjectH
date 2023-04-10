@@ -3,7 +3,7 @@ class SelectedProduct extends Database{
 
     function productLoader($termekID){
         $sql = null;
-        $sql = "SELECT * FROM `users` WHERE `ID` = '$termekID'";
+        $sql = "SELECT * FROM `termekek` WHERE `isokod` = '$termekID'";
         $result = $this->connProduct->query($sql);
         $row = $result->fetch_assoc();
 
@@ -15,22 +15,24 @@ class SelectedProduct extends Database{
                 <div class=\"row\">
                     <div class=\"col-6\">
                         <div id=\"productShowcaseImage\">
-                            <p>$row[ID]</p>
+                            <p>$row[termekid]</p>
                         </div>
                     </div>
                     <div class=\"col-6\">
                         <div id=\"productShowcaseInfo\">
                             <ul>
-                                <li>$row[nev]</li>
-                                <li>$row[faj]</li>
+                                <li>$row[termnev]</li>
+                                <li>$row[ar] Ft</li>
                                 <button id=\"proSub\">Kosárba</button>
+                                <input type=\"number\" min=\"1\" max=\"99\" value=\"1\" id=\"itemQuantity\">
                             </ul>
                         </div>
                     </div>
                     <div>
                         <div id=\"productShowcaseDescription\">
-                            <p>$row[szoveg]</p>
+                            <p>$row[leiras]</p>
                         </div>
+
                     </div>
                 </div>
             </div>
