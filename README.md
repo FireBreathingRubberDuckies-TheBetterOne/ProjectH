@@ -1,4 +1,4 @@
-# 0.3.1
+# 0.3.3.1
 
     - Kosár rendszer kiépítve
         - Mikor kiválasztunk egy elemelt (a boltabn rákattintunk) akkor átvisz minket egy másik oldalra ami azzal   kapcsolatban több információt jelenít meg

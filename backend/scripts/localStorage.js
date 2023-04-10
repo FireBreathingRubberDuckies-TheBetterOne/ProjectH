@@ -40,7 +40,8 @@ function addProduct(ProdInfo, itemQuna){ //A kiválasztott a terméket itt fogju
             localStorage.setItem('shopCart', JSON.stringify(cartData));
             return;
         }
-    }
+    } 
+    //Amenyiben nem talált meg a shopCart-ban hozzá adjuk azt
     const obj = {
              "id":ProdInfo.termekid,
              "quantity":itemQuna
