@@ -1,14 +1,17 @@
-# 0.3.1
-Átrendezve a mappa kiosztás. 
+# 0.3.3.2
 
-- backend:  ide kerünlnek azok a dolgok amik nem jelennek meg az oldalon. Csak a háttérben dolgoznak mintpl a database.php
+    - Kosár rendszer átírva
+        - Mostmár a $_SESSION['kart']-ban tárolódnak az adatok
+        - Felépítési reszere hasonló mit a localstorag-ban
+        Hozzáférés:
+            $_SESSION['kart'][index]["item"];
 
-- css:      formázos kerülnek ide
-
-- layout:   olyan filok amik valamien megjelenés biztosítanak pl: menu.php.   
-
-- view:     amikor rákattintunk egy gombra az oldalon a rá koreszponzív oldal nyílik meg pl: shop.php a 'Shop' gomb alatt
-
-TOvábbá mostmár style.css formázás működik midenhol ahova a head.php-t behívjuk
-
+            $_SESSION['kart'] --> A session neve amiben a kosár tartalma mentve van
+            [index] --> A session melyik elemével fogunk dolgozni
+            ['item'] / ['qunatity']
+                - ['item'] --> A termék id-ja. Ez alapján lőjük be mégis milyen termék(ek) vannak a kosárban
+                - ['quantity] --> Ha van termék akkor van menyiség. Ha még a terkék nincs a kosárban a felhasználó által megadott   menyiséggel tölti fel azt. Utánna meg ha többet szeretne hozzáadni akkor azt csak hozzá adja
+        - A terméket az addItem() funckióval tesszük meg amit a SelectedProduct.class.php-ban találhatunk meg
+                     
+        
 
