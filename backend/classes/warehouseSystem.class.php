@@ -102,16 +102,16 @@ while($row = $result->fetch_assoc()){
                 
                <td style='border: 1px solid black ; padding:5px'>
               
-               <input type='text' name='termnev' value='".$row['termnev']."'>
+               ".$row['termnev']."
              </td>
                <td style='border: 1px solid black ; padding:5px'>
               
-              <input type='text' name='ar' value='".$row['ar']."'>
+              ".$row['ar']*$quantity."
                </td>
               
                <td style='border: 1px solid black ; padding:5px'>
               
-             <input type='text' name='mennyiseg' value='".$quantity."'>
+             ".$quantity."
                </td>
                <td> <button type='submit' value='".$row['termekid']."' name='termekid'>Töröl</button></td>       
      </tr>
