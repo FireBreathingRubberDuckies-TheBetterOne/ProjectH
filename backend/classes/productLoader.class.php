@@ -17,13 +17,13 @@ class ProducLoader extends database{
             while($row = $result->fetch_assoc()){
                 if($teszt1 == 3){
                     $product .= "
-                    <a href=\"http://localhost/ProjectH/view/product.php?idTermek=$row[isokod]\" class=\"col-sm-12 col-md-6 col-lg-3 igen m-1\"><div>$row[termnev]</div></a>
+                    <a href=\"https://localhost/ProjectH/view/product.php?idTermek=$row[isokod]\" class=\"col-sm-12 col-md-6 col-lg-3 igen m-1\"><div>$row[termnev]</div></a>
                     </div><div class=\"row\">";
                     $teszt1 = 0;
                     // $tt = $row['nev'];
                     }
                 else{
-                    $product .= "<a href=\"http://localhost/ProjectH/view/product.php?idTermek=$row[isokod]\" class=\"col-sm-12 col-md-6 col-lg-3 igen m-1\"><div>$row[termnev]</div></a>";
+                    $product .= "<a href=\"https://localhost/ProjectH/view/product.php?idTermek=$row[isokod]\" class=\"col-sm-12 col-md-6 col-lg-3 igen m-1\"><div>$row[termnev]</div></a>";
                     // $tt = $row['nev'];
                     $teszt1++;
                 }

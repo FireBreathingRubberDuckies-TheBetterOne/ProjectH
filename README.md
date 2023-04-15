@@ -1,20 +1,17 @@
-# 0.3.3.1
+# 0.3.3.2
 
-    - Kosár rendszer kiépítve
-        - Mikor kiválasztunk egy elemelt (a boltabn rákattintunk) akkor átvisz minket egy másik oldalra ami azzal   kapcsolatban több információt jelenít meg
-        - ez utánna a 'Kosárba' gombal beletudjik tenni a kosarunk hogy később meg tudjuk veni azt
-        - A termékekről csak a termék idt mentjük és hogy belőle menyit szeretnénk venni
-        - A következő struktúra alapján vannak mentve az adatok:
+    - Kosár rendszer átírva
+        - Mostmár a $_SESSION['kart']-ban tárolódnak az adatok
+        - Felépítési reszere hasonló mit a localstorag-ban
+        Hozzáférés:
+            $_SESSION['kart'][index]["item"];
 
-            {
-                item: [
-                    {
-                        id: "6", ==> A termék ID-ja hogy tuduk azonosítani azt
-                        quantity: "6" ==> menyit szeretnénk venni belőle
-                    }
-                ]
-            }
-
-        - Egyenlőre hibakezeés még csak arra van ha a kosár 'shopCart' tartalma "korruptálódik" ([object Object] lesz a shop cart értéke) akkor a kosár tartalmát teljesen kiüríti. Nincs a kosár tartalma külsőleg külön tárolva így annak elveszett tartalmát a felhasználó nem tudja viszaállítani 
+            $_SESSION['kart'] --> A session neve amiben a kosár tartalma mentve van
+            [index] --> A session melyik elemével fogunk dolgozni
+            ['item'] / ['qunatity']
+                - ['item'] --> A termék id-ja. Ez alapján lőjük be mégis milyen termék(ek) vannak a kosárban
+                - ['quantity] --> Ha van termék akkor van menyiség. Ha még a terkék nincs a kosárban a felhasználó által megadott   menyiséggel tölti fel azt. Utánna meg ha többet szeretne hozzáadni akkor azt csak hozzá adja
+        - A terméket az addItem() funckióval tesszük meg amit a SelectedProduct.class.php-ban találhatunk meg
+                     
         
 
