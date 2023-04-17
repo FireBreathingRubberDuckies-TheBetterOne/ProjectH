@@ -16,46 +16,43 @@ class WarehouseSystem extends Database{
     }
 
     function termeksor(){
-        $sql = "SELECT  termekid,termnev,ar,mennyiseg,leiras FROM `termekek` ;";
+        $sql = "SELECT  isokod,termekid,termnev,ar,mennyiseg,leiras FROM `termekek` ;";
         $result = $this->connProduct->query($sql);
         if($result->num_rows>0){
             
-                        echo "<table>";
-                        echo "<tr>
-                <td>Név</td>
-                <td>Ár</td>
-                <td>Mennyiség</td>
-                <td>Leírás</td>
-            </tr>";
+            echo "<table> 
+                    <tr>
+                        <td>ISO Kód</td>
+                        <td>Név</td>
+                        <td>Ár</td>
+                        <td>Mennyiség</td>
+                        <td>Leírás</td>
+                    </tr>";
             
             while($row = $result->fetch_assoc()){   
-                 echo "<form action='#' method='post'>";
-                echo "<tr style='border: 1px solid black'>";
-                            
-                          echo "<td style='border: 1px solid black ; padding:5px'>";
-                          
-                          echo "<input type='text' name='termnev' value='".$row['termnev']."'>";
-                          echo "</td>";
-                          echo "<td style='border: 1px solid black ; padding:5px'>";
-                          
-                          echo "<input type='text' name='ar' value='".$row['ar']."'>";
-                          echo "</td>";
-                          
-                          echo "<td style='border: 1px solid black ; padding:5px'>";
-                          
-                          echo "<input type='text' name='mennyiseg' value='".$row['mennyiseg']."'>";
-                          echo "</td>";
-                          echo "<td style='border: 1px solid black ; padding:5px'>";
-                          
-                          echo "<input type='text' name='leiras' value='".$row['leiras']."'>";
-                          echo "</td>";
-                          echo "<td> <button type='submit' value='".$row['termekid']."' name='termekid'>Módosít</button></td>";
-                          
-                echo "</tr>";
-                
-                echo "</form>";
-                
-                    
+                $proTable =  
+                "
+                <form action='#' method='post'>
+                    <tr style='border: 1px solid black'>
+                        <td style='border: 1px solid black  padding:5px'>
+                            <input type='text' name='isokod' value='".$row['isokod']."'>
+                        </td>
+                        <td style='border: 1px solid black  padding:5px'>
+                            <input type='text' name='termnev' value='".$row['termnev']."'>
+                        </td>
+                        <td style='border: 1px solid black  padding:5px'>
+                            <input type='text' name='ar' value='".$row['ar']."'>
+                        </td>
+                        <td style='border: 1px solid black  padding:5px'>
+                            <input type='text' name='mennyiseg' value='".$row['mennyiseg']."'>
+                        </td>
+                        <td style='border: 1px solid black  padding:5px'>
+                            <input type='text' name='leiras' value='".$row['leiras']."'>
+                        </td>
+                        <td> <button type='submit' value='".$row['termekid']."' name='termekid'>Módosít</button></td>
+                    </tr>
+                </form>";
+                echo $proTable;                    
             }
            echo "</table>";
         }

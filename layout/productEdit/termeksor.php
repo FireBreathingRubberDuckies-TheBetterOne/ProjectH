@@ -15,6 +15,11 @@ require_once __ROOT__."\layout\uniLayout\menu.php";?>
     <table >
         <?php
         require_once (__ROOT__."\backend\class.php");
+        echo 
+        '<form action="#" method="post">
+            <button type="submit"  name="hozza">Termék Hozzáadás</button>
+        </form>';
+        
         if(isset($_POST['termekid']))
         {
             require_once "termekmodositas.php";
@@ -39,15 +44,10 @@ require_once __ROOT__."\layout\uniLayout\menu.php";?>
             echo "Sikeres Hozzáadás \t
             <a href='termeksor.php'><button>Vissza</button></a>";
         }
-        else
-        {
+        else{
             $productsClass->termeksor();
-            echo '<form action="#" method="post">
-        <button type="submit"  name="hozza">Hozzáad</button>
-        </form>';
+            
         }
-        
-        
         
         
         ?>

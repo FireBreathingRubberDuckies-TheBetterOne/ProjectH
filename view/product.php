@@ -2,8 +2,6 @@
 <?php
     define('__ROOT__', dirname(dirname(__FILE__)));
     require_once (__ROOT__."\backend\class.php");
-    var_dump($_SESSION);   
-    echo "Hossz: ".count($_SESSION['kart']);
 ?>
 <!DOCTYPE html>
 <html>

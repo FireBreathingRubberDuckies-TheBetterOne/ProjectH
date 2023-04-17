@@ -1,7 +1,4 @@
 
-<link rel="stylesheet" href="..\style\css\style.css">
-</head>
-<body>
     <form action="#" method="post">
 
     
@@ -18,6 +15,7 @@
     $termekid=filter_input(INPUT_POST,"termekid");
     $leiras=filter_input(INPUT_POST,"leiras");
     
+    echo '<a href="termeksor.php"><button>Vissza</button></a>';
     echo "<table>
         <tr>
             <td>Név</td>
@@ -36,7 +34,6 @@
         
             </tr>
     </table>";
-echo '<a href="termeksor.php"><button>Vissza</button></a>';
 
     
      
