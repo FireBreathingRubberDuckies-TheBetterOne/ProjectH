@@ -1,7 +1,8 @@
 <?php
     session_start();
     isset($_SESSION['kart'])?$_SESSION['kart']:$_SESSION['kart']=array();
-
+    isset($_SESSION['userLogidInStatus'])?$_SESSION['userLogidInStatus']:$_SESSION['userLogidInStatus']=false;
+    isset($_SESSION['userLogidIn'])?$_SESSION['userLogidIn']:$_SESSION['userLogidIn']=[];
     require_once(__ROOT__.'\backend\classes\database.class.php'); //Ebben az osztályan alakítjuk ki az adatbázissal való kommunikációt/kapcsolatot
 
     require_once(__ROOT__.'\backend\classes\userHandling.class.php'); $userClass = new UserHandling(); //A felhasználók információit itt tudjuk megtekentini egy nagy lista foemájában

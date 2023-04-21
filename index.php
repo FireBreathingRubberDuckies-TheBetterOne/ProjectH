@@ -7,7 +7,13 @@
 <html>
 <?php require_once __ROOT__."\layout\uniLayout\head.php";?>
 <body>
-    <?php require_once __ROOT__."\layout\uniLayout\menu.php";?>  
+    
+    <?php 
+        if(!$_SESSION['userLogiedIn']){
+            header("Location: http://localhost/ProjectH/view/Login/login.php");
+        }
+    require_once __ROOT__."\layout\uniLayout\menu.php"
+    ;?>  
     
 </body>
 </html>

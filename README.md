@@ -1,7 +1,10 @@
-# 0.3.3.3
+# 0.3.3.4
 
-    - Márk login page merge 
+    - A regisztációis fültöl megszabadultunk
+    - Márk kódjának mysqli-re való átalakítás
+        - login.php nagy mértékben át lett írva 
 
+ 
                      
         
 
