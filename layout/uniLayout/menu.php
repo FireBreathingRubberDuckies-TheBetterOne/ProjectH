@@ -5,7 +5,7 @@
     <a href="http://localhost/ProjectH/view/shop.php" class="navbar-item">Shop</a>
     <a href="http://localhost/ProjectH/view/shopingCart.php" class="navbar-item"><img src="<?php echo __ROOT__ ?>\style\img\shopping-cart.png"><sup id="itemNumber"></sup></a>
     <a href="http://localhost/ProjectH/view/admin.php" ><span class="navbar-brand mb-0 h1">Adatbázis</span></a>
-    <a href="http://localhost/ProjectH/view/Login/login.php" class="navbar-item">Bejelentkezés</a>
+    <a href="http://localhost/ProjectH/view/Login/logoutProcess.php" class="navbar-item">Logout</a>
 
     
 </nav> 

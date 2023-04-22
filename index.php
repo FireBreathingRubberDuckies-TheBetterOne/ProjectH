@@ -9,10 +9,8 @@
 <body>
     
     <?php 
-        if(!$_SESSION['userLogiedIn']){
-            header("Location: http://localhost/ProjectH/view/Login/login.php");
-        }
-    require_once __ROOT__."\layout\uniLayout\menu.php"
+        
+        require_once __ROOT__."\layout\uniLayout\menu.php"
     ;?>  
     
 </body>
