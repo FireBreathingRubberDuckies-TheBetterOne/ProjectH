@@ -2,10 +2,8 @@
  class Database{
     protected $connProduct = null;
     function __construct(){
-         $hostname = ini_get("mysqli.default_host");
- $username = ini_get("mysqli.default_user");
- $password = ini_get("mysqli.default_pw");
-        $this->connProduct = new mysqli($hostname,$username,$password,"termekek");
+         
+        $this->connProduct = new mysqli("localhost","root","","termekek");
         if($this->connProduct->connect_error ){
             echo "<script>alarm(\"A kapcsolat nem volt sikerese!\");</script>";
             die();

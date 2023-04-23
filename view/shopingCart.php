@@ -29,12 +29,12 @@
     {
         
             $productsClass->termekker();
-        var_dump($_SESSION);
+      echo  " <a href='checkout.php'> <button type='submit'>Checkout</button> </a>";
     }
     else
     {
        echo "Kosara üres" ;
-       var_dump($_SESSION);
+       
     }
     ?>  
 
