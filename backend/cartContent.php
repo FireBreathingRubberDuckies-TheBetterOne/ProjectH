@@ -1,7 +1,7 @@
 <?php
     session_start();
     define('__ROOT__', dirname(dirname(__FILE__)));
-    require_once (__ROOT__."\backend\class.php");
+    require_once (__ROOT__."/backend/class.php");
 if($_SERVER["REQUEST_METHOD"]="POST"){
     $itemQuantity = $_POST['itemQuantity'];
     $jsonstring = file_get_contents('http://localhost/ProjectH/backend/tempProductData.json');
