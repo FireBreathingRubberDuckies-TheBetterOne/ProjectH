@@ -7,14 +7,14 @@
    
     
     <?php define("__ROOT__", dirname(dirname(__DIR__))); 
-require_once __ROOT__."\layout\uniLayout\menu.php";?>
-<?php require_once __ROOT__."\layout\uniLayout\head.php";?>
-<link rel="stylesheet" href="..\style\css\style.css">
+require_once __ROOT__."/layout/uniLayout/menu.php";?>
+<?php require_once __ROOT__."/layout/uniLayout/head.php";?>
+<link rel="stylesheet" href="../style/css/style.css">
 </head>
 <body>
     <table >
         <?php
-        require_once (__ROOT__."\backend\class.php");
+        require_once (__ROOT__."/backend/class.php");
         if(isset($_POST['termekid']))
         {
             require_once "termekmodositas.php";

@@ -18,7 +18,8 @@ class WarehouseSystem extends Database{
     function termeksor(){
         $sql = "SELECT  termekid,termnev,ar,mennyiseg,leiras FROM `termekek` ;";
         $result = $this->connProduct->query($sql);
-        if($result->num_rows>0){
+        var_dump($result);
+        if($result->num_rows>0 && $result !== false){
             
                         echo "<table>";
                         echo "<tr>
