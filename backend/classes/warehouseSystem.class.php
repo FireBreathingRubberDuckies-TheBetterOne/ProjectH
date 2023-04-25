@@ -82,7 +82,7 @@ class WarehouseSystem extends Database{
         $this->connProduct->query($sql);
         
     }
-    function termekker()
+    function termekker($asd)
     {
         
             for($i=0;$i<count($_SESSION['kart']);$i++)
@@ -113,9 +113,13 @@ while($row = $result->fetch_assoc()){
                <td style='border: 1px solid black ; padding:5px'>
               
              ".$quantity."
-               </td>
-               <td> <button type='submit' value='".$row['termekid']."' name='termekid'>Töröl</button></td>       
-     </tr>
+               </td>";
+               if($asd==true)
+               {
+                echo" <td> <button type='submit' value='".$row['termekid']."' name='termekid'>Töröl</button></td>    ";
+               }
+              
+              echo " </tr>
      </form>
  </table>";
 }}}}

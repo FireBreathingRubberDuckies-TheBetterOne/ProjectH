@@ -16,19 +16,20 @@
             if($_POST["termekid"]==$_SESSION['kart'][$i]["item"])
             {
                 
-                unset($_SESSION['kart'][$i]["item"]);
-                unset($_SESSION['kart'][$i]["quantity"]);
+                
+              unset($_SESSION['kart'][$i]);
 
             }
             }
         }
+        $_SESSION['kart']=array_values($_SESSION['kart']);
         echo "Sikeresen eltávolította a terméket a kosarából.";
         
     }
     else if(isset($_SESSION['kart'])&& !empty($_SESSION['kart']))
     {
-        
-            $productsClass->termekker();
+        $asd=true;
+            $productsClass->termekker($asd);
       echo  " <a href='checkout.php'> <button type='submit'>Checkout</button> </a>";
      
       var_dump(empty($_SESSION['kart']));
