@@ -7,8 +7,6 @@
             echo "<script>alarm(\"A kapcsolat nem volt sikerese!\");</script>";
             die();
         }
-       
-        
     }
     function __destruct(){
         $this->connProduct->close();

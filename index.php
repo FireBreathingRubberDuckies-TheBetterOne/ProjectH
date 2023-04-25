@@ -9,7 +9,6 @@
 <body>
     
     <?php 
-        
         require_once __ROOT__."\layout\uniLayout\menu.php"
     ;?>  
     
