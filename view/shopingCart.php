@@ -25,16 +25,19 @@
         echo "Sikeresen eltávolította a terméket a kosarából.";
         
     }
-    else if(isset($_SESSION['kart']))
+    else if(isset($_SESSION['kart'])&& !empty($_SESSION['kart']))
     {
         
             $productsClass->termekker();
       echo  " <a href='checkout.php'> <button type='submit'>Checkout</button> </a>";
+     
+      var_dump(empty($_SESSION['kart']));
+      var_dump($_SESSION);
     }
     else
     {
        echo "Kosara üres" ;
-       
+       var_dump($_SESSION);
     }
     ?>  
 

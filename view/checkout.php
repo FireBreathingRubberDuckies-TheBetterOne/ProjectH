@@ -9,6 +9,8 @@
     <?php require_once __ROOT__."/layout/uniLayout/menu.php" ;?>
     <div> 
     <?php
+    
+    
     if(isset($_POST["termekid"]))
     { 
         for($i=0;$i < count($_SESSION['kart']);$i++)
@@ -24,14 +26,23 @@
             }
         }
         echo "Sikeresen eltávolította a terméket a kosarából.";
+       echo" <a href=\"checkout.php\"><button></button></a>";
         
     }
+    
     else if(isset($_SESSION['kart']))
     {
         
             $productsClass->termekker();
       echo "<input type=\"radio\" name=\"sietos\">Express szállítás
       <input type=\"radio\" name=\"normal\">Normál szállítás";
+      var_dump($_SESSION);
+     echo count($_SESSION['kart']) ;
+    }
+    else
+    {
+       echo "Kosara üres" ;
+       
     }
     ?>
     
