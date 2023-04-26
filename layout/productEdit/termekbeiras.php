@@ -1,5 +1,5 @@
 
-
+<body>
     <form action="" method="post" >
     Fajta:
         <?php

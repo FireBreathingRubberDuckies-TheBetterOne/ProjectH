@@ -16,43 +16,47 @@ class WarehouseSystem extends Database{
     }
 
     function termeksor(){
-        $sql = "SELECT  isokod,termekid,termnev,ar,mennyiseg,leiras FROM `termekek` ;";
+        $sql = "SELECT  termekid,termnev,ar,mennyiseg,leiras FROM `termekek` ;";
         $result = $this->connProduct->query($sql);
-        if($result->num_rows>0){
+        var_dump($result);
+        if($result->num_rows>0 && $result !== false){
             
-            echo "<table> 
-                    <tr>
-                        <td>ISO Kód</td>
-                        <td>Név</td>
-                        <td>Ár</td>
-                        <td>Mennyiség</td>
-                        <td>Leírás</td>
-                    </tr>";
+                        echo "<table>";
+                        echo "<tr>
+                <td>Név</td>
+                <td>Ár</td>
+                <td>Mennyiség</td>
+                <td>Leírás</td>
+            </tr>";
             
             while($row = $result->fetch_assoc()){   
-                $proTable =  
-                "
-                <form action='#' method='post'>
-                    <tr style='border: 1px solid black'>
-                        <td style='border: 1px solid black  padding:5px'>
-                            <input type='text' name='isokod' value='".$row['isokod']."'>
-                        </td>
-                        <td style='border: 1px solid black  padding:5px'>
-                            <input type='text' name='termnev' value='".$row['termnev']."'>
-                        </td>
-                        <td style='border: 1px solid black  padding:5px'>
-                            <input type='text' name='ar' value='".$row['ar']."'>
-                        </td>
-                        <td style='border: 1px solid black  padding:5px'>
-                            <input type='text' name='mennyiseg' value='".$row['mennyiseg']."'>
-                        </td>
-                        <td style='border: 1px solid black  padding:5px'>
-                            <input type='text' name='leiras' value='".$row['leiras']."'>
-                        </td>
-                        <td> <button type='submit' value='".$row['termekid']."' name='termekid'>Módosít</button></td>
-                    </tr>
-                </form>";
-                echo $proTable;                    
+                 echo "<form action='#' method='post'>";
+                echo "<tr style='border: 1px solid black'>";
+                            
+                          echo "<td style='border: 1px solid black ; padding:5px'>";
+                          
+                          echo "<input type='text' name='termnev' value='".$row['termnev']."'>";
+                          echo "</td>";
+                          echo "<td style='border: 1px solid black ; padding:5px'>";
+                          
+                          echo "<input type='text' name='ar' value='".$row['ar']."'>";
+                          echo "</td>";
+                          
+                          echo "<td style='border: 1px solid black ; padding:5px'>";
+                          
+                          echo "<input type='text' name='mennyiseg' value='".$row['mennyiseg']."'>";
+                          echo "</td>";
+                          echo "<td style='border: 1px solid black ; padding:5px'>";
+                          
+                          echo "<input type='text' name='leiras' value='".$row['leiras']."'>";
+                          echo "</td>";
+                          echo "<td> <button type='submit' value='".$row['termekid']."' name='termekid'>Módosít</button></td>";
+                          
+                echo "</tr>";
+                
+                echo "</form>";
+                
+                    
             }
            echo "</table>";
         }
@@ -78,6 +82,51 @@ class WarehouseSystem extends Database{
         $this->connProduct->query($sql);
         
     }
+    function termekker($asd)
+    {
+        
+            for($i=0;$i<count($_SESSION['kart']);$i++)
+            {
+                if(isset($_SESSION['kart'][$i]['item']))
+                {
+                $termid=$_SESSION['kart'][$i]['item'];
+                $quantity=$_SESSION['kart'][$i]['quantity'];
+                $sql = "SELECT  termekid,termnev,ar FROM `termekek` WHERE termekid='$termid' ;";
+                $result= $this->connProduct->query($sql);
+                
+                 if($result->num_rows>0){
+                     
+while($row = $result->fetch_assoc()){   
+    echo "<table>
+      <form action='#' method='post'>
+     <tr style='border: 1px solid black'>
+                
+               <td style='border: 1px solid black ; padding:5px'>
+              
+               ".$row['termnev']."
+             </td>
+               <td style='border: 1px solid black ; padding:5px'>
+              
+              ".$row['ar']*$quantity."
+               </td>
+              
+               <td style='border: 1px solid black ; padding:5px'>
+              
+             ".$quantity."
+               </td>";
+               if($asd==true)
+               {
+                echo" <td> <button type='submit' value='".$row['termekid']."' name='termekid'>Töröl</button></td>    ";
+               }
+              
+              echo " </tr>
+     </form>
+ </table>";
+}}}}
+ 
+
 }
+}
+
 
 ?>
