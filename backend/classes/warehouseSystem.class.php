@@ -1,8 +1,5 @@
 <?php
 class WarehouseSystem extends Database{
-    
-    
-
     function termekfeltoltes(){
         $isokod=filter_input(INPUT_POST,"isokod");
         $termnev=filter_input(INPUT_POST,"termnev");
@@ -82,51 +79,48 @@ class WarehouseSystem extends Database{
         $this->connProduct->query($sql);
         
     }
-    function termekker($asd)
-    {
-        
-            for($i=0;$i<count($_SESSION['kart']);$i++)
-            {
-                if(isset($_SESSION['kart'][$i]['item']))
-                {
+
+    function termekker($delete,$checkOut,$tablePart){
+        $dinamicTable =null;
+        if($tablePart){
+            $dinamicTable = 
+            "<form action='checkout.php' method='post'>
+            <table>";
+        }
+        for($i=0;$i<count($_SESSION['kart']);$i++){
+            if(isset($_SESSION['kart'][$i]['item'])){
+
                 $termid=$_SESSION['kart'][$i]['item'];
                 $quantity=$_SESSION['kart'][$i]['quantity'];
                 $sql = "SELECT  termekid,termnev,ar FROM `termekek` WHERE termekid='$termid' ;";
                 $result= $this->connProduct->query($sql);
-                
-                 if($result->num_rows>0){
-                     
-while($row = $result->fetch_assoc()){   
-    echo "<table>
-      <form action='#' method='post'>
-     <tr style='border: 1px solid black'>
-                
-               <td style='border: 1px solid black ; padding:5px'>
-              
-               ".$row['termnev']."
-             </td>
-               <td style='border: 1px solid black ; padding:5px'>
-              
-              ".$row['ar']*$quantity."
-               </td>
-              
-               <td style='border: 1px solid black ; padding:5px'>
-              
-             ".$quantity."
-               </td>";
-               if($asd==true)
-               {
-                echo" <td> <button type='submit' value='".$row['termekid']."' name='termekid'>Töröl</button></td>    ";
-               }
-              
-              echo " </tr>
-     </form>
- </table>";
-}}}}
- 
 
-}
-}
+                if($result->num_rows>0){
+                    while($row = $result->fetch_assoc()){   
+                        $dinamicTable .= "
+                            <tr style='border: 1px solid black'>
+                                <td style='border: 1px solid black ; padding:5px'>".$row['termnev']."</td>
+                                <td style='border: 1px solid black ; padding:5px'>".$row['ar']*$quantity."</td>
+                                <td style='border: 1px solid black ; padding:5px'>".$quantity."</td>";
+                                if($delete==true){
+                                    $dinamicTable.="<td> <button type='submit' value='".$row['termekid']."' name='termekid'>Töröl</button></td>";
+                                }
+                            $dinamicTable .="</tr>";
+                    }
+                }
+            }   
+        }
+        if($tablePart){
+            $dinamicTable .="</table>";
+            if($checkOut){
+                $dinamicTable.="
+                <input type='submit' value=\"Checkout\">
+                ";
+            }
+            $dinamicTable .=" 
+            </form>";
+        }
+        return $dinamicTable;
+    }
 
-
-?>
+}?>

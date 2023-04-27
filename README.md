@@ -1,13 +1,14 @@
-# 0.4.1.2
+# 0.4.2.1
 
-- backend:  ide kerünlnek azok a dolgok amik nem jelennek meg az oldalon. Csak a háttérben dolgoznak mintpl a database.php
+    - warehouse.class.php meghívása/hivatkozása a class.php-ban $productsClass -> $warehouseClass
+    - A checkout functoió és oldalai bekerültek a view/checout-ba
 
-- css:      formázos kerülnek ide
 
-- layout:   olyan filok amik valamien megjelenés biztosítanak pl: menu.php.   
+    - warehouse.class.php-ban a "termekekre" function nagyobb átalakításon ment végig
+        - Mostmár 3 atribútom kell a meghíváshoz: $warehouseClass->termekker(true,true,true);
+            - Az első atribútum: Ez határozza meg hogy a megejelnítés során a "törlés" gomb megjeleni vagy sem
+            - A második atribútum: Ez határozza meg hogy a megejelnítés során a "checkout" gomb megjeleni vagy sem
+            - A harmadik atribútum: Ez határozza meg hogy táblában+form-ban adja vissza az adtokat vagy csak szimpla tábla sorkként (<tr>)
 
-- view:     amikor rákattintunk egy gombra az oldalon a rá koreszponzív oldal nyílik meg pl: shop.php a 'Shop' gomb alatt
-
-TOvábbá mostmár style.css formázás működik midenhol ahova a head.php-t behívjuk
-
+    - orderData.php: a rendelés véglegesítése után ennek segítségével mentődnek az adatok az adatbázisba.(még változhat az adatmenyiség amit menteni fog)
 
