@@ -41,10 +41,11 @@ require_once __ROOT__."/layout/uniLayout/menu.php";?>
         }
         else
         {
-            $productsClass->termeksor();
             echo '<form action="#" method="post">
-        <button type="submit"  name="hozza">Hozzáad</button>
-        </form>';
+            <button type="submit"  name="hozza">Hozzáad</button>
+            </form>';
+            $productsClass->termeksor();
+           
         }
         
         

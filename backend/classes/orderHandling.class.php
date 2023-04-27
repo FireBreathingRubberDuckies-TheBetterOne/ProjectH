@@ -1,37 +1,64 @@
 <?php
-class UserHandling extends Database{
+class OrderHandling extends Database{
 
 
-    function felhasznalosor()
+    function rendelessor()
     {
-        $sql = " SELECT access.accessnev,access.accessid,user.felhasznaloid,user.nev,user.email
-        FROM `access` JOIN user ON(access.accessid=user.accessid);";
-        $result = $this->connUser->query($sql);
+    $sql = "SELECT rendeles.rendelesid,rendeles.rendelesdatum,tetelek.mennyiseg,termekek.termnev,vasarlo.vasarlonev,user.username\n"
+
+    . "FROM `rendeles` JOIN vasarlo USING(vasarloid)\n"
+
+    . "JOIN user USING(userid)\n"
+
+    . "JOIN tetelek USING(rendelesid)\n"
+    ."JOIN termekek USING(termekid)\n"
+    ."GROUP BY rendeles.rendelesid\n";
+        $result = $this->connProduct->query($sql);
         if($result->num_rows>0){
-            
-        echo "<table>";
-        echo "<tr>
+            $response="
+         <table>
+         <tr>";
                 
-                <td>Név</td>
-                <td>Email</td>
-                <td>Access</td>
+               $response.="
+               <td>Rendelés száma</td>
+               <td>Termék/ek</td>
+                <td>Mennyiség</td>
+                <td>Rendelés dátuma</td>
+                <td>Vásárló neve</td>
+                <td>Felhasználó neve</td>
                 </tr>";
                 while($row = $result->fetch_assoc()){
-                echo "<form action='felhasznalomodositas.php' method='post'><tr>
-                    <td><input type='text' name='nev' id='' value='".$row["nev"]."'></td>
-                    <td><input type='email' name='email' id='' value='".$row["email"]."'></td>
-                    <td><input type='text' name='accessnev' id='' value='".$row["accessnev"]."'></td>
-                    <td><button type='submit' name='modosit' value='".$row['felhasznaloid']."'>Módosít</button></td>
+                $response.= "<tr>
+                     <td>".$row["rendelesid"]."</td><td>";
+                     $sql2 = "SELECT termekek.termnev,tetelek.mennyiseg\n"
+
+                     . "FROM `rendeles` JOIN vasarlo USING(vasarloid)\n"
+                     . "JOIN user USING(userid)\n"
+                     . "JOIN tetelek USING(rendelesid)\n"
+                     ."JOIN termekek USING(termekid)\n"
+                     ."WHERE rendeles.rendelesid=$row[rendelesid]\n";
+
+                     $result2 = $this->connProduct->query($sql2);
+                        if($result->num_rows>0){
+                            $mennyiseg="";
+                            while($row2 = $result2->fetch_assoc()){
+                               $response.= $row2["termnev"]."<br>";
+                               $mennyiseg.=$row2["mennyiseg"]."<br>";
+                            }
+                            $response.=" </td><td>$mennyiseg";
+                        }
                     
-                    
-                    </tr>
-                </form>";
+                   $response.="</td>
+                    <td>".$row["rendelesdatum"]."</td>
+                    <td>".$row["vasarlonev"]."</td>
+                    <td>".$row["username"]."</td></tr>";
                 
                 }
-                echo "</table>";
+                $response.= "</table>";
                 
                 
         }
+        echo $response;
     }
     function felhasznaloaccess($accessnev)
     {
