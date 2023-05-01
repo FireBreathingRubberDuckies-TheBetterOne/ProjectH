@@ -51,7 +51,11 @@ class WarehouseSystem extends Database{
         
                            <input type='text' name='leiras' value='".$row['leiras']."'>
                            </td>
-                           <td> <button type='submit' value='".$row['termekid']."' name='termekid'>Módosít</button></td>
+                           <td>
+                                <form action=\"#\" method=\"post\">
+                                    <button type='submit' value='".$row['termekid']."' name='termekid'>Módosít</button>
+                                </form> 
+                            </td>
                           
                  </tr>
                 
@@ -89,7 +93,7 @@ class WarehouseSystem extends Database{
         $dinamicTable =null;
         if($tablePart){
             $dinamicTable = 
-            "<form action='checkout.php' method='post'>
+            "<form action='#' method='post'>
             <table>";
         }
         for($i=0;$i<count($_SESSION['kart']);$i++){
@@ -119,8 +123,8 @@ class WarehouseSystem extends Database{
             $dinamicTable .="</table>";
             if($checkOut){
                 $dinamicTable.="
-                <input type='submit' value=\"Checkout\">
-                ";
+                  <a href='checkout.php'> Checkout </a>";
+                ;
             }
             $dinamicTable .=" 
             </form>";
