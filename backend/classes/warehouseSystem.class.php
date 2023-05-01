@@ -16,7 +16,6 @@ class WarehouseSystem extends Database{
     }
 
     function termeksor(){
-<<<<<<< HEAD
         $sql = "SELECT  termekid,termnev,ar,mennyiseg,leiras FROM `termekek` ;";
         $result = $this->connProduct->query($sql);
         var_dump($result);
@@ -24,15 +23,6 @@ class WarehouseSystem extends Database{
             
                         echo "<table>";
                         echo "<tr>
-=======
-        $sql = "SELECT  * FROM `termekek` ;";
-        $result = $this->connProduct->query($sql);
-        if($result->num_rows>0){
-            
-                        echo "<table>";
-                        echo "<tr>
-                        <td>IsoKód</td>
->>>>>>> origin/Norbi
                 <td>Név</td>
                 <td>Ár</td>
                 <td>Mennyiség</td>
@@ -42,14 +32,7 @@ class WarehouseSystem extends Database{
             while($row = $result->fetch_assoc()){   
                  echo "<form action='#' method='post'>";
                 echo "<tr style='border: 1px solid black'>";
-<<<<<<< HEAD
                             
-=======
-                        echo "<td style='border: 1px solid black ; padding:5px'>";
-                                
-                        echo "<input type='text' name='ar' value='".$row['isokod']."'>";
-                        echo "</td>";
->>>>>>> origin/Norbi
                           echo "<td style='border: 1px solid black ; padding:5px'>";
                           
                           echo "<input type='text' name='termnev' value='".$row['termnev']."'>";
@@ -99,12 +82,7 @@ class WarehouseSystem extends Database{
         $this->connProduct->query($sql);
         
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
     function termekker()
-=======
-    function termekker($asd)
->>>>>>> 19ccd4ab159201f7bd06455c05f9a5c20d371880
     {
         
             for($i=0;$i<count($_SESSION['kart']);$i++)
@@ -150,8 +128,5 @@ while($row = $result->fetch_assoc()){
 }
 }
 
-=======
-}
->>>>>>> origin/Norbi
 
 ?>
