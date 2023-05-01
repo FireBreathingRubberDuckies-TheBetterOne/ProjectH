@@ -7,24 +7,14 @@
    
     
     <?php define("__ROOT__", dirname(dirname(__DIR__))); 
-<<<<<<< HEAD
 require_once __ROOT__."/layout/uniLayout/menu.php";?>
 <?php require_once __ROOT__."/layout/uniLayout/head.php";?>
 <link rel="stylesheet" href="../style/css/style.css">
-=======
-require_once __ROOT__."\layout\uniLayout\menu.php";?>
-<?php require_once __ROOT__."\layout\uniLayout\head.php";?>
-<link rel="stylesheet" href="..\style\css\style.css">
->>>>>>> origin/Norbi
 </head>
 <body>
     <table >
         <?php
-<<<<<<< HEAD
         require_once (__ROOT__."/backend/class.php");
-=======
-        require_once (__ROOT__."\backend\class.php");
->>>>>>> origin/Norbi
         if(isset($_POST['termekid']))
         {
             require_once "termekmodositas.php";
@@ -51,10 +41,11 @@ require_once __ROOT__."\layout\uniLayout\menu.php";?>
         }
         else
         {
-            $productsClass->termeksor();
             echo '<form action="#" method="post">
-        <button type="submit"  name="hozza">Hozzáad</button>
-        </form>';
+            <button type="submit"  name="hozza">Hozzáad</button>
+            </form>';
+            $productsClass->termeksor();
+           
         }
         
         

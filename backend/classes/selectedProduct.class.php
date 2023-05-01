@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 class SelectedProduct extends Database
 {
 
@@ -11,22 +10,10 @@ class SelectedProduct extends Database
         $row = $result->fetch_assoc();
 
         file_put_contents(__ROOT__ . '/backend/tempProductData.json', json_encode($row), FILE_USE_INCLUDE_PATH);
-=======
-class SelectedProduct extends Database{
-
-    function productLoader($termekID){
-        $sql = null;
-        $sql = "SELECT * FROM `users` WHERE `ID` = '$termekID'";
-        $result = $this->connProduct->query($sql);
-        $row = $result->fetch_assoc();
-
-        file_put_contents(__ROOT__.'/backend/tempProductData.json', json_encode($row), FILE_USE_INCLUDE_PATH);
->>>>>>> origin/Norbi
 
         $pdTable = "
         <div id=\"productShowcase\">
             <div class=\"container\">
-<<<<<<< HEAD
             <div class=\"row\">
             <div class=\"col-6\">
             <div id=\"productShowcaseImage\">
@@ -52,35 +39,11 @@ class SelectedProduct extends Database{
                             </div>
                         </div>
                     </div>
-=======
-                <div class=\"row\">
-                    <div class=\"col-6\">
-                        <div id=\"productShowcaseImage\">
-                            <p>$row[ID]</p>
-                        </div>
-                    </div>
-                    <div class=\"col-6\">
-                        <div id=\"productShowcaseInfo\">
-                            <ul>
-                                <li>$row[nev]</li>
-                                <li>$row[faj]</li>
-                                <button id=\"proSub\">Kosárba</button>
-                            </ul>
-                        </div>
-                    </div>
-                    <div>
-                        <div id=\"productShowcaseDescription\">
-                            <p>$row[szoveg]</p>
-                        </div>
-                    </div>
-                </div>
->>>>>>> origin/Norbi
             </div>
         </div>
         ";
         return $pdTable;
     }
-<<<<<<< HEAD
     function addItem($itemId,$itemQuan){
         for($i = 0; $i < count($_SESSION['kart']);$i++){
             if($_SESSION['kart'][$i]['item']==$itemId){
@@ -95,10 +58,3 @@ class SelectedProduct extends Database{
         $_SESSION['kart'][] = $obj;
     }
 }
-=======
-     
-}
-    
-   
-?>
->>>>>>> origin/Norbi
