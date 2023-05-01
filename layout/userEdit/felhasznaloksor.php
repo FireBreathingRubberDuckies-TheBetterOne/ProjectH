@@ -16,6 +16,10 @@
     
 <?php
 $data=new Database();
+<<<<<<< HEAD
+=======
+$data->__construct2();
+>>>>>>> origin/Norbi
 $data->felhasznalosor();
 ?>
 <a href="felhasznaloinsert.php"><button>Hozzáadás</button></a>

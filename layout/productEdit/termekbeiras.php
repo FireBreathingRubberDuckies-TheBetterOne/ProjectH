@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+<!DOCTYPE html>
+<html>
+    
+>>>>>>> origin/Norbi
 
 <body>
     <form action="" method="post" >
@@ -27,3 +33,10 @@
 
     
     ?>
+<<<<<<< HEAD
+=======
+
+
+</body>
+</html>
+>>>>>>> origin/Norbi

@@ -16,6 +16,7 @@ class WarehouseSystem extends Database{
     }
 
     function termeksor(){
+<<<<<<< HEAD
         $sql = "SELECT  termekid,termnev,ar,mennyiseg,leiras FROM `termekek` ;";
         $result = $this->connProduct->query($sql);
         var_dump($result);
@@ -23,6 +24,15 @@ class WarehouseSystem extends Database{
             
                         echo "<table>";
                         echo "<tr>
+=======
+        $sql = "SELECT  * FROM `termekek` ;";
+        $result = $this->connProduct->query($sql);
+        if($result->num_rows>0){
+            
+                        echo "<table>";
+                        echo "<tr>
+                        <td>IsoKód</td>
+>>>>>>> origin/Norbi
                 <td>Név</td>
                 <td>Ár</td>
                 <td>Mennyiség</td>
@@ -32,7 +42,14 @@ class WarehouseSystem extends Database{
             while($row = $result->fetch_assoc()){   
                  echo "<form action='#' method='post'>";
                 echo "<tr style='border: 1px solid black'>";
+<<<<<<< HEAD
                             
+=======
+                        echo "<td style='border: 1px solid black ; padding:5px'>";
+                                
+                        echo "<input type='text' name='ar' value='".$row['isokod']."'>";
+                        echo "</td>";
+>>>>>>> origin/Norbi
                           echo "<td style='border: 1px solid black ; padding:5px'>";
                           
                           echo "<input type='text' name='termnev' value='".$row['termnev']."'>";
@@ -82,6 +99,7 @@ class WarehouseSystem extends Database{
         $this->connProduct->query($sql);
         
     }
+<<<<<<< HEAD
     function termekker()
     {
         
@@ -124,5 +142,8 @@ while($row = $result->fetch_assoc()){
 }
 }
 
+=======
+}
+>>>>>>> origin/Norbi
 
 ?>
