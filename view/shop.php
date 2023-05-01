@@ -1,21 +1,32 @@
 <!-- A webshop része az oldalnak -->
 <?php
     define('__ROOT__', dirname(dirname(__FILE__)));
-    require_once (__ROOT__."\backend\database.php");
-    $db =  new Database();
+<<<<<<< HEAD
+    require_once __ROOT__."/backend/class.php";
+=======
+    require_once __ROOT__."\backend\class.php";
+>>>>>>> origin/Norbi
     $searcd = isset($_GET['prod'])?$_GET['prod']:null;
 
 ?>
 <!DOCTYPE html>
 <html>
-<?php require_once (__ROOT__."\layout\head.php");?>
+<<<<<<< HEAD
+<?php require_once (__ROOT__."/layout/uniLayout/head.php");?>
 <body>
-    <?php require_once __ROOT__."\layout\menu.php";?>
+    <?php require_once __ROOT__."/layout/uniLayout/menu.php";?>
     <div id="main">
-    <?php require_once __ROOT__."\layout\searchBar.php" ?>    
+    <?php require_once __ROOT__."/layout/uniLayout/searchBar.php" ?>    
+=======
+<?php require_once (__ROOT__."\layout\uniLayout\head.php");?>
+<body>
+    <?php require_once __ROOT__."\layout\uniLayout\menu.php";?>
+    <div id="main">
+    <?php require_once __ROOT__."\layout\uniLayout\searchBar.php" ?>    
+>>>>>>> origin/Norbi
         
         <?php
-            echo $db->loader($searcd);
+            echo $prodLoadClass->loader($searcd);
         ?>  
 </div>
 </body>

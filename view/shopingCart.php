@@ -1,14 +1,14 @@
 <?php
     define('__ROOT__', dirname(dirname(__FILE__)));
+<<<<<<< HEAD
     require_once (__ROOT__."/backend/class.php");
 ?>
 <!DOCTYPE html>
 <html>
 <?php require_once __ROOT__."/layout/uniLayout/head.php";?>
-<body>   
-    <?php require_once __ROOT__."/layout/uniLayout/menu.php" ;?>
-    <div> 
-    <?php
+<body>
+    <?php require_once __ROOT__."/layout/uniLayout/menu.php";
+   
     if(isset($_POST["termekid"]))
     { 
         for($i=0;$i < count($_SESSION['kart']);$i++)
@@ -30,12 +30,26 @@
     {
         
             $productsClass->termekker();
-      echo "<input type=\"radio\" name=\"sietos\">Express szállítás
-      <input type=\"radio\" name=\"normal\">Normál szállítás";
+      echo  " <a href='checkout.php'> <button type='submit'>Checkout</button> </a>";
     }
-    ?>
-    
+    else
+    {
+       echo "Kosara üres" ;
+       
+    }
+    ?>  
 
-    </div>
+    
+=======
+    require_once (__ROOT__."\backend\database.php");
+?>
+<!DOCTYPE html>
+<html>
+<?php require_once __ROOT__."\layout\head.php";?>
+<body>
+    <?php require_once __ROOT__."\layout\menu.php";?>  
+    <h2>Kosár</h2>
+>>>>>>> origin/Norbi
+    
 </body>
 </html>
