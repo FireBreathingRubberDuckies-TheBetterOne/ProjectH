@@ -15,13 +15,13 @@
     <form action=\"http://localhost/ProjectH/backend/orderData.php\" method=\"post\">
         <table>
             <tr>
-                <td name=\"buyerConfirm\"> $user</td>
+                <td><input type=\"text\" name=\"buyerConfirm\" readonly value=\"$user\"></td>
             </tr>
             <tr>
-                <td name=\"raktarConfirm\">$warehouse </td>
+            <td><input type=\"text\" name=\"raktarConfirm\" readonly value=\"$warehouse\"></td>
             </tr>
             <tr>
-                <td name=\"szamlaszamConfirm\"> $account </td>
+            <td><input type=\"text\" name=\"'szamlaszamConfirm\" readonly value=\"$account\"></td>
             </tr>".
             $warehouseClass->termekker(false, false,false)."
         </table>

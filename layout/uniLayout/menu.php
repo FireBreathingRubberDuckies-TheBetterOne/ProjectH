@@ -7,8 +7,4 @@
     <a href="http://localhost/ProjectH/view/admin.php" ><span class="navbar-brand mb-0 h1">Adatbázis</span></a>
     <a href="http://localhost/ProjectH/view/Login/logoutProcess.php" class="navbar-item">Logout</a>
     
-
-
-    
 </nav> 
-<!--asd-->

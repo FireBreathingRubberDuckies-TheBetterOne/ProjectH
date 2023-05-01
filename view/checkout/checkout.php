@@ -13,8 +13,9 @@
             <p>Kirendeltség ratára: 
                 <select name="raktar" id="raktar" required>
                     <option value="" selected disabled hidden>Choose here</option>
-                    <option value="rakter1">Volvo</option>
-                    <option value="raktar2">Saab</option>
+                    <option value="debrecenKertvarosRakatr">Debrecen Kerváros Raktár</option>
+                    <option value="jozsatekejRaktar">Józsatelek Raktár</option>
+                    <option value="EpreskertRaktar">Epreskert Raktár</option>
                 </select></p>
             <p>Számlaszám: <input type="text" name="szamlaszam" required></p>
             <input type="submit" value="Megrendel">

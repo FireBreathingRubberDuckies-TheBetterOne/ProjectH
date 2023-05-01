@@ -1,14 +1,14 @@
-# 0.4.2.1
+# 0.4.2.2
 
-    - warehouse.class.php meghívása/hivatkozása a class.php-ban $productsClass -> $warehouseClass
-    - A checkout functoió és oldalai bekerültek a view/checout-ba
+    - orderData.php - meghívja a orderConformation.class.php elemeit a megfelelő sorrendeben
+        - miután a rendelés le lett adva a kosár ($_session['kart']) tartalmát autómatikusan menti majd törli 
+    - orderConformation.class.php - Adatfeldolgozáséer felel, adatbázisba felfivi a kosár elemeit a megfeleő módon
+
+    - A raktárban (termeksor.php) meglett oldva hogy az új elem hozzáadás gomb a lista tetején legyen
+
+    - Ismert probléma: product.php-ban ha hozzáadunk egy terméket a kosárhoz akkor kijelentkeztet az oldal, DE ez csak egyszer fordul elő miután bejelentkezünk és addig nem fordul elő míg úja ki nem jelentekük és be
+
+    - Kód rendezés(nem módosítás): - warehouse.class.php: A sok echot lecserélve egy string változóra mit vissza ad a termeksor() és termekker()
 
 
-    - warehouse.class.php-ban a "termekekre" function nagyobb átalakításon ment végig
-        - Mostmár 3 atribútom kell a meghíváshoz: $warehouseClass->termekker(true,true,true);
-            - Az első atribútum: Ez határozza meg hogy a megejelnítés során a "törlés" gomb megjeleni vagy sem
-            - A második atribútum: Ez határozza meg hogy a megejelnítés során a "checkout" gomb megjeleni vagy sem
-            - A harmadik atribútum: Ez határozza meg hogy táblában+form-ban adja vissza az adtokat vagy csak szimpla tábla sorkként (<tr>)
-
-    - orderData.php: a rendelés véglegesítése után ennek segítségével mentődnek az adatok az adatbázisba.(még változhat az adatmenyiség amit menteni fog)
 

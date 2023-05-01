@@ -15,11 +15,14 @@ class WarehouseSystem extends Database{
     function termeksor(){
         $sql = "SELECT  termekid,termnev,ar,mennyiseg,leiras FROM `termekek` ;";
         $result = $this->connProduct->query($sql);
-        var_dump($result);
+        $tableReturn = '
+        <form action="#" method="post">
+            <button type="submit"  name="hozza">Hozzáad</button>
+        </form>';
         if($result->num_rows>0 && $result !== false){
-            
-                        echo "<table>";
-                        echo "<tr>
+            $tableReturn .="
+                         <table>
+                         <tr>
                 <td>Név</td>
                 <td>Ár</td>
                 <td>Mennyiség</td>
@@ -27,35 +30,37 @@ class WarehouseSystem extends Database{
             </tr>";
             
             while($row = $result->fetch_assoc()){   
-                 echo "<form action='#' method='post'>";
-                echo "<tr style='border: 1px solid black'>";
+                $tableReturn.=
+                  "<form action='#' method='post'>
+                 <tr style='border: 1px solid black'>
                             
-                          echo "<td style='border: 1px solid black ; padding:5px'>";
+                           <td style='border: 1px solid black ; padding:5px'>
+                        
+                           <input type='text' name='termnev' value='".$row['termnev']."'>
+                           </td>
+                           <td style='border: 1px solid black ; padding:5px'>
+        
+                           <input type='text' name='ar' value='".$row['ar']."'>
+                           </td>
+        
+                           <td style='border: 1px solid black ; padding:5px'>
+        
+                           <input type='text' name='mennyiseg' value='".$row['mennyiseg']."'>
+                           </td>
+                           <td style='border: 1px solid black ; padding:5px'>
+        
+                           <input type='text' name='leiras' value='".$row['leiras']."'>
+                           </td>
+                           <td> <button type='submit' value='".$row['termekid']."' name='termekid'>Módosít</button></td>
                           
-                          echo "<input type='text' name='termnev' value='".$row['termnev']."'>";
-                          echo "</td>";
-                          echo "<td style='border: 1px solid black ; padding:5px'>";
-                          
-                          echo "<input type='text' name='ar' value='".$row['ar']."'>";
-                          echo "</td>";
-                          
-                          echo "<td style='border: 1px solid black ; padding:5px'>";
-                          
-                          echo "<input type='text' name='mennyiseg' value='".$row['mennyiseg']."'>";
-                          echo "</td>";
-                          echo "<td style='border: 1px solid black ; padding:5px'>";
-                          
-                          echo "<input type='text' name='leiras' value='".$row['leiras']."'>";
-                          echo "</td>";
-                          echo "<td> <button type='submit' value='".$row['termekid']."' name='termekid'>Módosít</button></td>";
-                          
-                echo "</tr>";
+                 </tr>
                 
-                echo "</form>";
+                 </form>";
                 
                     
             }
-           echo "</table>";
+           $tableReturn.= "</table>";
+           return $tableReturn;
         }
     }
 
