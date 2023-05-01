@@ -1,8 +1,5 @@
 <?php
 class WarehouseSystem extends Database{
-    
-    
-
     function termekfeltoltes(){
         $isokod=filter_input(INPUT_POST,"isokod");
         $termnev=filter_input(INPUT_POST,"termnev");
@@ -18,11 +15,14 @@ class WarehouseSystem extends Database{
     function termeksor(){
         $sql = "SELECT  termekid,termnev,ar,mennyiseg,leiras FROM `termekek` ;";
         $result = $this->connProduct->query($sql);
-        var_dump($result);
+        $tableReturn = '
+        <form action="#" method="post">
+            <button type="submit"  name="hozza">Hozzáad</button>
+        </form>';
         if($result->num_rows>0 && $result !== false){
-            
-                        echo "<table>";
-                        echo "<tr>
+            $tableReturn .="
+                         <table>
+                         <tr>
                 <td>Név</td>
                 <td>Ár</td>
                 <td>Mennyiség</td>
@@ -30,35 +30,41 @@ class WarehouseSystem extends Database{
             </tr>";
             
             while($row = $result->fetch_assoc()){   
-                 echo "<form action='#' method='post'>";
-                echo "<tr style='border: 1px solid black'>";
+                $tableReturn.=
+                  "<form action='#' method='post'>
+                 <tr style='border: 1px solid black'>
                             
-                          echo "<td style='border: 1px solid black ; padding:5px'>";
+                           <td style='border: 1px solid black ; padding:5px'>
+                        
+                           <input type='text' name='termnev' value='".$row['termnev']."'>
+                           </td>
+                           <td style='border: 1px solid black ; padding:5px'>
+        
+                           <input type='text' name='ar' value='".$row['ar']."'>
+                           </td>
+        
+                           <td style='border: 1px solid black ; padding:5px'>
+        
+                           <input type='text' name='mennyiseg' value='".$row['mennyiseg']."'>
+                           </td>
+                           <td style='border: 1px solid black ; padding:5px'>
+        
+                           <input type='text' name='leiras' value='".$row['leiras']."'>
+                           </td>
+                           <td>
+                                <form action=\"#\" method=\"post\">
+                                    <button type='submit' value='".$row['termekid']."' name='termekid'>Módosít</button>
+                                </form> 
+                            </td>
                           
-                          echo "<input type='text' name='termnev' value='".$row['termnev']."'>";
-                          echo "</td>";
-                          echo "<td style='border: 1px solid black ; padding:5px'>";
-                          
-                          echo "<input type='text' name='ar' value='".$row['ar']."'>";
-                          echo "</td>";
-                          
-                          echo "<td style='border: 1px solid black ; padding:5px'>";
-                          
-                          echo "<input type='text' name='mennyiseg' value='".$row['mennyiseg']."'>";
-                          echo "</td>";
-                          echo "<td style='border: 1px solid black ; padding:5px'>";
-                          
-                          echo "<input type='text' name='leiras' value='".$row['leiras']."'>";
-                          echo "</td>";
-                          echo "<td> <button type='submit' value='".$row['termekid']."' name='termekid'>Módosít</button></td>";
-                          
-                echo "</tr>";
+                 </tr>
                 
-                echo "</form>";
+                 </form>";
                 
                     
             }
-           echo "</table>";
+           $tableReturn.= "</table>";
+           return $tableReturn;
         }
     }
 
@@ -82,51 +88,48 @@ class WarehouseSystem extends Database{
         $this->connProduct->query($sql);
         
     }
-    function termekker($asd)
-    {
-        
-            for($i=0;$i<count($_SESSION['kart']);$i++)
-            {
-                if(isset($_SESSION['kart'][$i]['item']))
-                {
+
+    function termekker($delete,$checkOut,$tablePart){
+        $dinamicTable =null;
+        if($tablePart){
+            $dinamicTable = 
+            "<form action='#' method='post'>
+            <table>";
+        }
+        for($i=0;$i<count($_SESSION['kart']);$i++){
+            if(isset($_SESSION['kart'][$i]['item'])){
+
                 $termid=$_SESSION['kart'][$i]['item'];
                 $quantity=$_SESSION['kart'][$i]['quantity'];
                 $sql = "SELECT  termekid,termnev,ar FROM `termekek` WHERE termekid='$termid' ;";
                 $result= $this->connProduct->query($sql);
-                
-                 if($result->num_rows>0){
-                     
-while($row = $result->fetch_assoc()){   
-    echo "<table>
-      <form action='#' method='post'>
-     <tr style='border: 1px solid black'>
-                
-               <td style='border: 1px solid black ; padding:5px'>
-              
-               ".$row['termnev']."
-             </td>
-               <td style='border: 1px solid black ; padding:5px'>
-              
-              ".$row['ar']*$quantity."
-               </td>
-              
-               <td style='border: 1px solid black ; padding:5px'>
-              
-             ".$quantity."
-               </td>";
-               if($asd==true)
-               {
-                echo" <td> <button type='submit' value='".$row['termekid']."' name='termekid'>Töröl</button></td>    ";
-               }
-              
-              echo " </tr>
-     </form>
- </table>";
-}}}}
- 
 
-}
-}
+                if($result->num_rows>0){
+                    while($row = $result->fetch_assoc()){   
+                        $dinamicTable .= "
+                            <tr style='border: 1px solid black'>
+                                <td style='border: 1px solid black ; padding:5px'>".$row['termnev']."</td>
+                                <td style='border: 1px solid black ; padding:5px'>".$row['ar']*$quantity."</td>
+                                <td style='border: 1px solid black ; padding:5px'>".$quantity."</td>";
+                                if($delete==true){
+                                    $dinamicTable.="<td> <button type='submit' value='".$row['termekid']."' name='termekid'>Töröl</button></td>";
+                                }
+                            $dinamicTable .="</tr>";
+                    }
+                }
+            }   
+        }
+        if($tablePart){
+            $dinamicTable .="</table>";
+            if($checkOut){
+                $dinamicTable.="
+                  <a href='checkout.php'> Checkout </a>";
+                ;
+            }
+            $dinamicTable .=" 
+            </form>";
+        }
+        return $dinamicTable;
+    }
 
-
-?>
+}?>

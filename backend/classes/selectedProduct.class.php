@@ -55,6 +55,6 @@ class SelectedProduct extends Database
             "item"=>$itemId,
             "quantity"=>$itemQuan
         );
-        $_SESSION['kart'][] = $obj;
+        array_push($_SESSION['kart'], $obj);
     }
 }
