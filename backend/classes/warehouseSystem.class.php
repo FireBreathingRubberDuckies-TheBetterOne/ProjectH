@@ -100,7 +100,11 @@ class WarehouseSystem extends Database{
         
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     function termekker()
+=======
+    function termekker($asd)
+>>>>>>> 19ccd4ab159201f7bd06455c05f9a5c20d371880
     {
         
             for($i=0;$i<count($_SESSION['kart']);$i++)
@@ -131,9 +135,13 @@ while($row = $result->fetch_assoc()){
                <td style='border: 1px solid black ; padding:5px'>
               
              ".$quantity."
-               </td>
-               <td> <button type='submit' value='".$row['termekid']."' name='termekid'>Töröl</button></td>       
-     </tr>
+               </td>";
+               if($asd==true)
+               {
+                echo" <td> <button type='submit' value='".$row['termekid']."' name='termekid'>Töröl</button></td>    ";
+               }
+              
+              echo " </tr>
      </form>
  </table>";
 }}}}
