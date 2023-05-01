@@ -1,1 +1,0 @@
-Ez lesz majd a kosár oldal ahol fizeni fogunk
