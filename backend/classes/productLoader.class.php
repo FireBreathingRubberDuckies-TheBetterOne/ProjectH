@@ -8,53 +8,42 @@ class ProducLoader extends database{
         else{
             $sql = "SELECT * FROM `termekek` WHERE `faj` = '$lll'";
         }
-        $teszt1 = 0;
 
         $result = $this->connProduct->query($sql);
-        $product = "<div class=\"container\"><div class=\"row\">";
-        // $tt = null;
+        $product = " <div class=\"products\"><div class=\"container\"><div class=\"row card-deck\">";
+
         if($result->num_rows>0){
             while($row = $result->fetch_assoc()){ 
-                if($teszt1 == 3){
-                    if($row["kep"]==null)
-                    {
-                        $product .= "
-                        <a href=\"https://localhost/ProjectH/view/product.php?idTermek=$row[isokod]\" class=\"col-sm-12 col-md-6 col-lg-3 igen m-1\"><div><img src=\"../pictures/alap.jpg\" class=\"col-sm-12 col-md-6 col-lg-3 \" alt=\"$row[termnev]\">$row[termnev]</div></a>
-                        </div><div class=\"row\">";
-                    }
-                    else
-                    {
-
-                    
-                    $product .= "
-                    <a href=\"https://localhost/ProjectH/view/product.php?idTermek=$row[isokod]\" class=\"col-sm-12 col-md-6 col-lg-3 igen m-1\"><div><img src=\"../pictures/$row[kep]\" class=\"col-sm-12 col-md-6 col-lg-3 \" alt=\"$row[termnev]\">$row[termnev]</div></a>
-                    </div><div class=\"row\">";
-                    }
-                    $teszt1 = 0;
-                    // $tt = $row['nev'];
-                    }
-                else{
-                    if($row["kep"]==null)
-                    {
-                        $product .= "
-                        <a href=\"https://localhost/ProjectH/view/product.php?idTermek=$row[isokod]\" class=\"col-sm-12 col-md-6 col-lg-3 igen m-1\"><div><img src=\"../pictures/alap.jpg\" class=\"col-sm-12 col-md-6 col-lg-3 \" alt=\"$row[termnev]\">$row[termnev]</div></a>
-                        </div><div class=\"row\">";
-                    }
-                    else
-                    {
-
-                    
-                    $product .= "
-                    <a href=\"https://localhost/ProjectH/view/product.php?idTermek=$row[isokod]\" class=\"col-sm-12 col-md-6 col-lg-3 igen m-1\"><div><img src=\"../pictures/$row[kep]\"class=\"col-sm-12 col-md-6 col-lg-3 \" alt=\"$row[termnev]\">$row[termnev]</div></a>
-                    </div><div class=\"row\">";
-                    }
-                    
-                    // $tt = $row['nev'];
-                    $teszt1++;
-                }
+              $product .= "
+              <div class=\"col-sm-12 col-md-6 col-lg-3 mb-4\">
+                <a href=\"http://localhost/ProjectH/view/product.php?idTermek=$row[isokod]\" >
+                  <div class=\"card h-100 mb-3\">
+                    <img src=\"".$this->properPicture($row['kep'])."\" class=\"card-img-top\" alt=\"Product 1\">
+                      <div class=\"card-body\">
+                        <h5 class=\"card-title py-1\">$row[termnev]</h5>
+                          <div class=\"d-flex justify-content-between align-items-center\">
+                            <div class=\"btn-group\">
+                              <button type=\"button\" class=\"btn btn-sm\">Kosárba tesz.</button>
+                            </div>
+                            <span class=\"price\">$row[ar] FT</span>
+                          </div>
+                      </div>
+                  </div>
+                </a>
+              </div>
+           ";
             }
-             $product .= "</div>";
-             return $product;
+        }
+        $product .= "</div></div></div>";
+        return $product;
+    }
+
+    function properPicture($img){
+        if($img==null){
+            return "http://localhost/ProjectH/pictures/alap.jpg";
+        }
+        else{
+            return $img."jpg";
         }
     }
 }

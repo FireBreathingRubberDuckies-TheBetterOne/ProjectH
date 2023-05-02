@@ -1,5 +1,5 @@
 <?php
-class OrderConformation extends Database{
+class OrderConformation extends Database {
    
     function orderItemToDb($kart,$buyer){
         $buyerID = "SELECT `vasarloid` FROM `vasarlo` WHERE `vasarlonev`='$buyer'";
@@ -24,11 +24,12 @@ class OrderConformation extends Database{
         }
 
     }
-
-    /*Vásárló táblába beilesztés*/function buyerToDb($sql){
+    
+    function buyerToDb($sql){ /*Vásárló táblába beilesztés*/
         $this->connProduct->query($sql);
     }
-    /*Rendeleés táblába való beilesztés*/function ordersToDb($buyer,$accName){
+
+    function ordersToDb($buyer,$accName){ /*Rendeleés táblába való beilesztés*/
         $buyerID = "SELECT `vasarloid` FROM `vasarlo` WHERE `vasarlonev`='$buyer'";
         $result = $this->connProduct->query($buyerID);
         $row = $result->fetch_assoc();
@@ -44,7 +45,7 @@ class OrderConformation extends Database{
 
         $this->connProduct->query($rendelesSQL);
     }
-
+    
 
 
 }

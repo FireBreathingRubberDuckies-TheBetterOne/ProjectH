@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <?php require_once __ROOT__."/layout/uniLayout/head.php";?>
-<body>   
+<body class="d-flex flex-column min-vh-100" >   
     <?php require_once __ROOT__."/layout/uniLayout/menu.php" ;?>
     <div> 
         <form method="post" action="http://localhost/ProjectH/view/checkout/orderConformation.php">
@@ -21,5 +21,6 @@
             <input type="submit" value="Megrendel">
         </form>
     </div>
+    <?php require_once __ROOT__.'\layout\uniLayout\footer.php';?>
 </body>
 </html>

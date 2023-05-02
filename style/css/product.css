@@ -1,0 +1,19 @@
+#productShowcase{
+    padding-top: 30px;
+     margin: auto;
+     border: 1px solid black;
+     width: 90%;
+     background-color: rgb(124, 124, 124);
+ }
+ #productShowcaseImage{
+     border: 3px solid black;
+     height: 500px;
+ }
+ #productShowcaseInfo{
+     border: 3px solid black;
+  height: 500px;
+ }
+ #productShowcaseDescription{
+     border: 3px solid black;
+     min-height: 100px;
+ }

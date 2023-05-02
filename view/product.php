@@ -6,10 +6,11 @@
 <!DOCTYPE html>
 <html>
 <?php require_once (__ROOT__."\layout\uniLayout\head.php");?>
-<body>
+<body class="d-flex flex-column min-vh-100" >
     <?php
     require_once __ROOT__."\layout\uniLayout\menu.php";
     echo $seletedProdClass->productLoader($_GET['idTermek']);
 ?>
+ <?php require_once __ROOT__.'\layout\uniLayout\footer.php';?>
 </body>
 </html>

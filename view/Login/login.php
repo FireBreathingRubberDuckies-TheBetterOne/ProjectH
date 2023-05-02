@@ -1,17 +1,22 @@
+<?php
+define('__ROOT__', dirname(dirname(dirname(__FILE__))));
+?>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Bejelentkezés</title>
-</head>
+<?php require_once __ROOT__."\layout\uniLayout\head.php";?>
 <body>
-    <center>
-            <p>Bejelentkezés</p>
-         <form action="loginProcess.php" method="POST">
-
-                   <input type="text" id="user" name="username" placeholder="username"/><br><br>
-                   <input type="Password" id="pass" name="password" placeholder="password"/><br><br>
-                   <button type="submit" id="btn" name="login" default>login</button>
-         </form>
-    </center>
+<div id="loginMain">
+        <div class="row">
+            <div class="colm-form">
+                <div class="form-container">
+                    <form action="loginProcess.php" method="POST">
+                        <input type="text" id="user" name="username" placeholder="username"/><br><br>
+                        <input type="Password" id="pass" name="password" placeholder="password"/><br><br>
+                        <button type="submit" class="btn-login" name="login" default>login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

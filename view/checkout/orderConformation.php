@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="hun">
 <?php require_once __ROOT__."\layout\uniLayout\head.php";?>
-<body>
+<body class="d-flex flex-column min-vh-100" >
     <?php   require_once __ROOT__."\layout\uniLayout\menu.php";
     $user = $_POST['buyer'];
     $warehouse = $_POST['raktar'];
@@ -23,12 +23,13 @@
             <tr>
             <td><input type=\"text\" name=\"'szamlaszamConfirm\" readonly value=\"$account\"></td>
             </tr>".
-            $warehouseClass->termekker(false, false,false)."
+            $orderClas->termekker(false, false,false)."
         </table>
         <input type=\"submit\" value=\"Rendelés leadás\">
     </form>";
 
     echo $recetiReturn;
     ?>
+    <?php require_once __ROOT__.'\layout\uniLayout\footer.php';?>
 </body>
 </html>

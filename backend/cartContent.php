@@ -16,6 +16,6 @@ if($_SERVER["REQUEST_METHOD"]="POST"){
     else{
         $seletedProdClass -> addItem($jsonValue['termekid'],$itemQuantity);
     }
-    header("Location: https://localhost/ProjectH/view/product.php?idTermek=$jsonValue[isokod]");
+    header("Location: http://localhost/ProjectH/view/product.php?idTermek=$jsonValue[isokod]");
     exit;
 }
