@@ -14,4 +14,6 @@
         - A termék megjelnítés és a bejelentkező fül(jelnleg még az sem működik rendesen) maradt meg.
         - A kódja nagy része használhatatlan a mostnai állaptukban így általam újra lesznek írva 
         
-
+    - Footer kialakítása
+    	- jelenleg csak place holder adatokkal van feltöltve.
+	- Minden oldalon megjeleni a footer kivéve a bejelentkező fülön mive ott mincs rá szükség
