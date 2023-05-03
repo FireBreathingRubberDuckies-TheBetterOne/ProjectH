@@ -59,12 +59,12 @@ class OrderHandling extends Database{
             echo $response;
     }
 
-    function termekker($delete,$checkOut,$tablePart){
+    function termekker($delete,$tablePart){
         $dinamicTable =null;
         if($tablePart){
             $dinamicTable = 
             "<form action='#' method='post'>
-                <div class=\"container\" id=\"checkOut\"\>";
+                <div class=\"container\" id=\"checkOut\">";
         }
         for($i=0;$i<count($_SESSION['kart']);$i++){
             if(isset($_SESSION['kart'][$i]['item'])){
@@ -77,27 +77,20 @@ class OrderHandling extends Database{
                 if($result->num_rows>0){
                     while($row = $result->fetch_assoc()){   
                         $dinamicTable .= "
-                            <div class=\"row\">
-                                <div class=\"col-1 rowItem\">".$quantity."</div>
-                                <div class=\"col-8 rowItem\">".$row['termnev']."</div>
-                                <div class=\"col-2 rowItem\">".$row['ar']*$quantity."</div>";
-                                if($delete==true){
-                                    $dinamicTable.="<div class=\"col-1\"> <button type='submit' value='".$row['termekid']."' name='termekidRemove'>Töröl</button></div>";
-                                }
+                            <div class=\"row \">
+                                    <div class=\"col-1 rowItem\"><p>".$quantity."</p></div>
+                                    <div class=\"col-lg-8 col-md-6 col-sm-4 rowItem\"><p>".$row['termnev']."</p></div>
+                                    <div class=\"col-2 rowItem\"><p>".$row['ar']*$quantity." Ft</p></div>";
+                                    if($delete==true){
+                                        $dinamicTable.="<div class=\"col-1\"> <button type='submit'  value='".$row['termekid']."' name='termekidRemove'>Töröl</button></div>";
+                                    }
                             $dinamicTable .="</div>";
                     }
                 }
             }   
         }
         if($tablePart){
-            $dinamicTable .="</div>";
-            if($checkOut){
-                $dinamicTable.="
-                  <div class=\"order\"><a href='checkout.php' class=\"text-center\"> Checkout </a></div>";
-                ;
-            }
-            $dinamicTable .=" 
-            </form>";
+            $dinamicTable .="</div></form>";
         }
         return $dinamicTable;
     }
@@ -121,5 +114,24 @@ class OrderHandling extends Database{
         else{
             return "<p style=\"coolor: white\">Kosara üres</p>" ;
         }
+    }
+
+    function osszArkeres($tax){
+        if($tax){
+            $taxHunagry = 1.27;
+        }
+        else{
+            $taxHunagry = 1;
+        }
+        $osszAr = 0;
+        for($i=0;$i<count($_SESSION['kart']);$i++){
+            $termid=$_SESSION['kart'][$i]['item'];
+            $quantity=$_SESSION['kart'][$i]['quantity'];
+            $sql = "SELECT ar FROM `termekek` WHERE termekid='$termid' ;";
+            $result= $this->connProduct->query($sql);
+            $row = $result->fetch_assoc();
+            $osszAr = $osszAr + ($quantity*$row['ar']);
+        }
+        return $osszAr*$taxHunagry;
     }
 }

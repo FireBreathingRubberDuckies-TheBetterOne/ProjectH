@@ -17,7 +17,6 @@
                     <option value="jozsatekejRaktar">Józsatelek Raktár</option>
                     <option value="EpreskertRaktar">Epreskert Raktár</option>
                 </select></p>
-            <p>Számlaszám: <input type="text" name="szamlaszam" required></p>
             <input type="submit" value="Megrendel">
         </form>
     </div>

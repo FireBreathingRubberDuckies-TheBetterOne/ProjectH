@@ -23,15 +23,22 @@ html{
     color: white;
 }
 
+#orderListing{
+    box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    border: 1px solid black;
+    background-color: ghostwhite;
+    width: 80%;
+    min-height: 300px;
+}
+
 #main{
     margin: auto;
     width: 90%;
 }
 
 #checkOut{
-    width: 50%;
+    width: 100%;
     background-color: white;
-    text-align: center;
 }
 
 .rowItem{

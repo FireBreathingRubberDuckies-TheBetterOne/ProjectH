@@ -16,8 +16,8 @@ class SelectedProduct extends Database
             <div class=\"container\">
             <div class=\"row\">
             <div class=\"col-6\">
-            <div id=\"productShowcaseImage\">
-            <p name=\"produtcID\">$row[termekid]</p>
+            <div id=\"productShowcaseImage\" class=\"d-flex justify-content-center\">
+                <div  class='h-100'><img src=\"".$this->properPicture($row['kep'])."\"></div>
             </div>
             </div>
             <div class=\"col-6\">
@@ -56,5 +56,13 @@ class SelectedProduct extends Database
             "quantity"=>$itemQuan
         );
         array_push($_SESSION['kart'], $obj);
+    }
+    function properPicture($img){
+        if($img==null){
+            return "http://localhost/ProjectH/pictures/alap.jpg";
+        }
+        else{
+            return $img."jpg";
+        }
     }
 }
