@@ -15,41 +15,42 @@ class WarehouseSystem extends Database{
     function termeksor(){
         $sql = "SELECT  termekid,termnev,ar,mennyiseg,leiras FROM `termekek` ;";
         $result = $this->connProduct->query($sql);
-        $tableReturn = '
-        <form action="#" method="post">
-            <button type="submit"  name="hozza">Hozzáad</button>
-        </form>';
+        $tableReturn = '';
         if($result->num_rows>0 && $result !== false){
             $tableReturn .="
-                         <table>
-                         <tr>
+                         <table class=\"ProductTable\">
+                         <tr class=\"trHead\">
                 <td>Név</td>
                 <td>Ár</td>
                 <td>Mennyiség</td>
                 <td>Leírás</td>
+                <td><form action=\"#\" method=\"post\">
+                <button type=\"submit\"  name=\"hozza\">Hozzáad</button>
+            </form>
+            </td>
             </tr>";
             
             while($row = $result->fetch_assoc()){   
                 $tableReturn.=
                   "<form action='#' method='post'>
-                 <tr style='border: 1px solid black'>
+                 <tr>
                             
-                           <td style='border: 1px solid black ; padding:5px'>
+                           <td>
                         
-                           <input type='text' name='termnev' value='".$row['termnev']."'>
+                           <input type='text' name='termnev' value='".$row['termnev']."' readonly>
                            </td>
-                           <td style='border: 1px solid black ; padding:5px'>
+                           <td>
         
-                           <input type='text' name='ar' value='".$row['ar']."'>
+                           <input type='text' name='ar' value='".$row['ar']."' readonly>
                            </td>
         
-                           <td style='border: 1px solid black ; padding:5px'>
+                           <td>
         
-                           <input type='text' name='mennyiseg' value='".$row['mennyiseg']."'>
+                           <input type='text' name='mennyiseg' value='".$row['mennyiseg']."' readonly>
                            </td>
-                           <td style='border: 1px solid black ; padding:5px'>
+                           <td>
         
-                           <input type='text' name='leiras' value='".$row['leiras']."'>
+                           <input type='text' name='leiras' value='".$row['leiras']."' readonly>
                            </td>
                            <td>
                                 <form action=\"#\" method=\"post\">

@@ -10,12 +10,12 @@
 
     <div id="orderListing" class="h-100 mx-auto my-auto p-1">
         <div class="row">
-            <div class="col-7" >
+            <div >
                 <div class="bg-dark">
                     <?php echo $orderHandlingClass->orderListing();?>
                 </div>
             </div>
-            <div class="col-5">
+            <div >
                 <div class="row d-flex justify-content-center">
                     <div class="col-3"><p>Nettó össz ár: <?php echo $orderHandlingClass->osszArkeres(false); ?> Ft</p></div>
                     <div class="col-3"><p>Bruttó össz ár: <?php echo $orderHandlingClass->osszArkeres(true); ?> Ft+Áf</p></div>

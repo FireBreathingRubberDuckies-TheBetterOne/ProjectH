@@ -48,5 +48,8 @@
     .btn-group .btn {
         font-size: 9px;
     }
-} */
+}*/ 
+.cardButton{
+	vertical-align: sub;
+}
 

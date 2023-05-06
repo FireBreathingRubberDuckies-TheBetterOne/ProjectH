@@ -1,19 +1,86 @@
 #productShowcase{
     padding-top: 30px;
      margin: auto;
-     border: 1px solid black;
-     width: 90%;
+     border: 1px solid white;
+     width: 80%;
      background-color: rgb(124, 124, 124);
+    margin-bottom: 3%;
+
+     border-radius: 20px; 
  }
  #productShowcaseImage{
-     border: 3px solid black;
+     border: 3px solid white;
+     width: 120%;
      height: 500px;
+
+
+     border-radius: 10px;
  }
  #productShowcaseInfo{
-     border: 3px solid black;
+    float: right;
+    text-align: center;
+   border: 3px solid white;
   height: 500px;
+  width: 80%;
+  background-color: #2a2f40;
+  color: white;
+    margin-bottom: 3px;
+
+  border-radius: 10px;
  }
  #productShowcaseDescription{
-     border: 3px solid black;
+     border: 3px solid #2a2f40;;
      min-height: 100px;
+     background-color: #2a2f40;
+     margin-bottom: 10px;
+
+     border-radius: 10px;
+ }
+ .proSub{
+    background-color: greenyellow;
+
+
+    border-radius: 10px;
+ }
+ #itemQuantity{
+
+
+    border-radius: 10px;
+ }
+ .listItem{
+    border: 3px solid white;
+    background-color: rgb(124, 124, 124);
+    color: greenyellow;
+    height: 50px;
+    width: 94%;
+    line-height: 50px;
+ }
+ ul{
+    list-style-type: none
+ }
+ #space{
+    height: 50px;
+ }
+ #h-100{
+    width: auto;
+    height: auto;
+ }
+ .checkdiv{
+   border: 3px solid black;
+   background-color: #2a2f40;
+   margin-bottom: 10px;
+   margin: auto;
+ }
+ .p{
+   color: greenyellow;
+ }
+ .order{
+   width: 100%;
+   height: 100%;
+   background-color: greenyellow;
+   border-radius: 10px;
+ }
+ .posi{
+   width: 100%;
+   height: 100%;
  }
