@@ -19,7 +19,7 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-3"><p>Nettó össz ár: <?php echo $orderHandlingClass->osszArkeres(false); ?> Ft</p></div>
                     <div class="col-3"><p>Bruttó össz ár: <?php echo $orderHandlingClass->osszArkeres(true); ?> Ft+Áf</p></div>
-                    <div class=" d-flex justify-content-center"><div class="btn-group"><a href='checkout.php' class="text-center btn btn-sm"> Checkout </a></div></div>
+                    <div class=" d-flex justify-content-center"><div class="btn-group"> <?php echo $orderHandlingClass-> checkOutValid(); ?></div></div>
                 </div>
             </div>
         </div> 

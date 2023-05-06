@@ -1,5 +1,4 @@
-# 1.1.2.0
+# 1.1.2.2
 
-    - Figyemeztető üzenet jelenimk meg a termék kártyákon a Katalógus oldalon amikor egy termékből kevesebb mint 10 darab van raktáron vagy egyáltalán nincs raktáron
-    - Hibakezelés: 
+    - orderConformation.php-ban a végső megjelenés table-ről át lett írva div-re
 

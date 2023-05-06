@@ -135,4 +135,12 @@ class OrderHandling extends Database{
         }
         return $osszAr*$taxHunagry;
     }
+    function checkOutValid(){
+        if(count($_SESSION['kart'])>0){
+            return "<a href='checkout.php' class=\"text-center btn btn-sm\"> Checkout </a>";
+        }
+        else{
+            return "<a href='' class=\"text-center btn btn-sm\" disabled> Checkout </a>";
+        }
+    }
 }
