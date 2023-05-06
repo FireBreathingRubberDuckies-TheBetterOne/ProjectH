@@ -12,17 +12,18 @@
         $user = $_POST['buyer'];
         $warehouse = $_POST['raktar'];
         $recetiReturn = "
-        <form action=\"http://localhost/ProjectH/backend/orderData.php\" method=\"post\">
-            <table>
+        <form action=\"http://localhost/ProjectH/backend/orderData.php\" method=\"post\" style=\"background-color: #252830\">
+            <table class=\"checkdiv\">
                 <tr>
                     <td><input type=\"text\" name=\"buyerConfirm\" readonly value=\"$user\"></td>
                 </tr>
                 <tr>
                 <td><input type=\"text\" name=\"raktarConfirm\" readonly value=\"$warehouse\"></td>
-                </tr>".
+                </tr>
+                <tr><td><input type=\"submit\" value=\"Rendelés leadás\" class=\"order\"></td></tr>".
                 $orderHandlingClass->termekker(false, false,false)."
             </table>
-            <input type=\"submit\" value=\"Rendelés leadás\">
+            
         </form>";
 
         echo $recetiReturn;
