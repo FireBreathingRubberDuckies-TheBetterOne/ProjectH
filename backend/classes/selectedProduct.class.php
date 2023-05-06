@@ -21,12 +21,12 @@ class SelectedProduct extends Database
         <div id=\"productShowcase\">
             <div class=\"container\">
             <div class=\"row\">
-            <!-- <div class=\"col-6\">
+             <div class=\"col-6\">
              <div id=\"productShowcaseImage\" class=\"d-flex justify-content-center\">
                 <div  class='h-100'><img src=\"".$this->properPicture($row['kep'])."\"></div>
             </div> 
-            </div> --> 
-            <div class=\"col-10\">
+            </div>  
+            <div class=\"col-6\">
             <div id=\"productShowcaseInfo\">
             <form action=\"http://localhost/ProjectH/backend/cartContent.php\" method=\"post\">
             <ul>
@@ -38,7 +38,7 @@ class SelectedProduct extends Database
                                     <li class=\"listItem\" name=\"productPrice\">$row[ar] Ft</li>
                                     <li id=\"space\"></li>
                                         <button type=\"submit\" class=\"proSub\">Kosárba</button>
-                                        <input type=\"number\" min=\"1\" max=\"99\" value=\"1c\" id=\"itemQuantity\" name=\"itemQuantity\">
+                                        <input type=\"number\" min=\"1\" max=\"99\" value=\"1\" id=\"itemQuantity\" name=\"itemQuantity\">
                                     </ul>
                                     </form>
                             </div>
