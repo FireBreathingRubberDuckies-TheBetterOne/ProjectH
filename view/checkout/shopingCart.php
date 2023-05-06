@@ -11,14 +11,14 @@
     <div id="orderListing" class="h-100 mx-auto my-auto p-1">
         <div class="row">
             <div >
-                <div class="bg-dark">
+                <div>
                     <?php echo $orderHandlingClass->orderListing();?>
                 </div>
             </div>
             <div >
                 <div class="row d-flex justify-content-center">
-                    <div class="col-3"><p>Nettó össz ár: <?php echo $orderHandlingClass->osszArkeres(false); ?> Ft</p></div>
-                    <div class="col-3"><p>Bruttó össz ár: <?php echo $orderHandlingClass->osszArkeres(true); ?> Ft+Áf</p></div>
+                    <div class="col-3 NettoBrutto"><p>Nettó össz ár: <?php echo $orderHandlingClass->osszArkeres(false); ?> Ft</p></div>
+                    <div class="col-3 NettoBrutto"><p>Bruttó össz ár: <?php echo $orderHandlingClass->osszArkeres(true); ?> Ft+Áf</p></div>
                     <div class=" d-flex justify-content-center"><div class="btn-group"> <?php echo $orderHandlingClass-> checkOutValid(); ?></div></div>
                 </div>
             </div>
