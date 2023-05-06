@@ -3,14 +3,12 @@ class OrderHandling extends Database{
 
     function rendelessor(){
         $sql = "SELECT rendeles.rendelesid,rendeles.rendelesdatum,tetelek.mennyiseg,termekek.termnev,vasarlo.vasarlonev,user.username\n"
-
         . "FROM `rendeles` JOIN vasarlo USING(vasarloid)\n"
-
         . "JOIN user USING(userid)\n"
-
         . "JOIN tetelek USING(rendelesid)\n"
         ."JOIN termekek USING(termekid)\n"
         ."GROUP BY rendeles.rendelesid\n";
+        $response = null;
             $result = $this->connProduct->query($sql);
             if($result->num_rows>0){
                 $response="
@@ -55,8 +53,11 @@ class OrderHandling extends Database{
                     $response.= "</table>";
                     
                     
+                    return $response;
             }
-            echo $response;
+            else{
+                return "Nem található rendelés az adatbázisban! ";
+            }
     }
 
     function termekker($delete,$tablePart){
@@ -106,7 +107,7 @@ class OrderHandling extends Database{
                 }
             }
             $_SESSION['kart']=array_values($_SESSION['kart']);
-            return "Sikeresen eltávolította a terméket a kosarából.";
+            return header("Location: http://localhost/ProjectH/view/checkout/shopingCart.php");
         }
         else if(isset($_SESSION['kart'])&& !empty($_SESSION['kart'])){   
                 return $this->termekker(true,true,true);

@@ -21,7 +21,9 @@ html{
     height: 10px;
     color: white;
 }
-
+#outOfStock{
+    color: red;
+}
 #orderListing{
     box-shadow: 0 2px 20px rgba(0,0,0,0.5);
     border: 1px solid black;

@@ -1,15 +1,10 @@
 <?php
 class ProducLoader extends database{
-    function loader($lll){
-        $sql = null;
-        if($lll==null){
-            $sql = "SELECT * FROM `termekek` WHERE 1";
-        }
-        else{
-            $sql = "SELECT * FROM `termekek` WHERE `faj` = '$lll'";
-        }
+    function loader(){
+        $sql = "SELECT * FROM `termekek` WHERE 1";
 
         $result = $this->connProduct->query($sql);
+
         $product = " <div class=\"products\"><div class=\"container\"><div class=\"row card-deck\">";
 
         if($result->num_rows>0){
@@ -23,10 +18,11 @@ class ProducLoader extends database{
                         <h5 class=\"card-title py-1\">$row[termnev]</h5>
                           <div class=\"d-flex justify-content-between align-items-center\">
                             <div class=\"btn-group\">
-                              <button type=\"button\" class=\"btn btn-sm\">Kosárba tesz.</button>
+                              <button type=\"button\" class=\"btn btn-sm\">Bővebben</button>
                             </div>
                             <span class=\"price\">$row[ar] FT</span>
                           </div>
+                          <span id=\"outOfStock\">".$this->outOfStcok($row['mennyiseg'])."</span>
                       </div>
                   </div>
                 </a>
@@ -43,7 +39,18 @@ class ProducLoader extends database{
             return "http://localhost/ProjectH/pictures/alap.jpg";
         }
         else{
-            return $img."jpg";
+            return "http://localhost/ProjectH/pictures/".$img.".jpg";
         }
+    }
+    function outOfStcok($meny){
+      if($meny==0){
+        return "Nincs rakárton!";
+      }
+      else if($meny<10){
+          return $meny." van már csak raktáron!";
+      }
+      else{
+        return;
+      }
     }
 }

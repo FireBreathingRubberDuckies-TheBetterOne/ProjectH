@@ -18,7 +18,7 @@ require_once __ROOT__."/layout/uniLayout/menu.php";
     
 <?php
 
-$orderClass->rendelessor();
+ echo $orderHandlingClass->rendelessor();
 ?>
 
 </body>

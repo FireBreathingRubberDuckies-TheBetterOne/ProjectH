@@ -62,7 +62,7 @@ class SelectedProduct extends Database
             return "http://localhost/ProjectH/pictures/alap.jpg";
         }
         else{
-            return $img."jpg";
+            return "http://localhost/ProjectH/pictures/".$img.".jpg";
         }
     }
 }
