@@ -1,0 +1,19 @@
+.ProductTable{
+    background-color: #2a2f40;
+    margin: auto;
+}
+.deleteButton{
+    background-color: red;
+    color: aliceblue;
+    border-radius: 10px;
+}
+.trHead
+{
+    color: white;
+}
+td{
+    border: black 1px solid;
+}
+.BackButton{
+    float: right;
+}

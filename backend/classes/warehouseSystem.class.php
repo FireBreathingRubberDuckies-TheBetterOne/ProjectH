@@ -31,23 +31,23 @@ class WarehouseSystem extends Database{
             
             while($row = $result->fetch_assoc()){   
                 $tableReturn.=
-                  "<form action='#' method='post'>
+                  "<form action='#' method='post' class=\"kecske\">
                  <tr style='border: 1px solid black'>
                             
-                           <td style='border: 1px solid black ; padding:5px'>
+                           <td>
                         
                            <input type='text' name='termnev' value='".$row['termnev']."'>
                            </td>
-                           <td style='border: 1px solid black ; padding:5px'>
+                           <td>
         
                            <input type='text' name='ar' value='".$row['ar']."'>
                            </td>
         
-                           <td style='border: 1px solid black ; padding:5px'>
+                           <td>
         
                            <input type='text' name='mennyiseg' value='".$row['mennyiseg']."'>
                            </td>
-                           <td style='border: 1px solid black ; padding:5px'>
+                           <td>
         
                            <input type='text' name='leiras' value='".$row['leiras']."'>
                            </td>

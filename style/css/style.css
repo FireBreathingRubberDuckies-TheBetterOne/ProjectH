@@ -1,6 +1,7 @@
-@import 'loginSytle.css';
+@import 'loginstyle.css';
 @import 'shop.css';
 @import 'product.css';
+@import 'edit.css';
 
 body{
     background: #252830;

@@ -6,7 +6,7 @@ define('__ROOT__', dirname(dirname(dirname(__FILE__))));
 <?php require_once __ROOT__."\layout\uniLayout\head.php";?>
 <body>
 <div id="loginMain">
-        <div class="row">
+        <div class="loginrow">
             <div class="colm-form">
                 <div class="form-container">
                     <form action="loginProcess.php" method="POST">

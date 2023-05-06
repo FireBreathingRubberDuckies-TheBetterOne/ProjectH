@@ -21,11 +21,12 @@ class ProducLoader extends database{
                     <img src=\"".$this->properPicture($row['kep'])."\" class=\"card-img-top\" alt=\"Product 1\">
                       <div class=\"card-body\">
                         <h5 class=\"card-title py-1\">$row[termnev]</h5>
-                          <div class=\"d-flex justify-content-between align-items-center\">
+                          <div id=\"cardButton\" class=\"d-flex justify-content-between align-items-center\">
+                            <span class=\"price\">$row[ar] FT</span>  
                             <div class=\"btn-group\">
                               <button type=\"button\" class=\"btn btn-sm\">Kosárba tesz.</button>
                             </div>
-                            <span class=\"price\">$row[ar] FT</span>
+                            
                           </div>
                       </div>
                   </div>
