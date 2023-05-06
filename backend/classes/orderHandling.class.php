@@ -77,12 +77,12 @@ class OrderHandling extends Database{
                 if($result->num_rows>0){
                     while($row = $result->fetch_assoc()){   
                         $dinamicTable .= "
-                            <div class=\"row \">
-                                    <div class=\"col-1 rowItem\"><p>".$quantity."</p></div>
-                                    <div class=\"col-lg-8 col-md-6 col-sm-4 rowItem\"><p>".$row['termnev']."</p></div>
-                                    <div class=\"col-2 rowItem\"><p>".$row['ar']*$quantity." Ft</p></div>";
+                            <div class=\"row\">
+                                    <div class=\"col-1 rowItem cartItems\"><p>".$quantity."</p></div>
+                                    <div class=\"col-lg-8 col-md-6 col-sm-4 rowItem cartItems\"><p>".$row['termnev']."</p></div>
+                                    <div class=\"col-2 rowItem cartItems\"><p>".$row['ar']*$quantity." Ft</p></div>";
                                     if($delete==true){
-                                        $dinamicTable.="<div class=\"col-1\"> <button type='submit'  value='".$row['termekid']."' name='termekidRemove'>Töröl</button></div>";
+                                        $dinamicTable.="<div class=\"col-1 cartItems\"> <button type='submit'  value='".$row['termekid']."' name='termekidRemove' id=\"termekidRemove\">Töröl</button></div>";
                                     }
                             $dinamicTable .="</div>";
                     }
@@ -112,7 +112,7 @@ class OrderHandling extends Database{
                 return $this->termekker(true,true,true);
         }
         else{
-            return "<p style=\"coolor: white\">Kosara üres</p>" ;
+            return "<p style=\"color: white\">Kosara üres</p>" ;
         }
     }
 

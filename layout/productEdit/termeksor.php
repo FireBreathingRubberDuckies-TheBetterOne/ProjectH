@@ -14,21 +14,21 @@
         }
         elseif(isset($_POST['termekid2'])){
             $warehouseClass->termekmodosit();
-            echo "Sikeres módosítás \t
-            <a href='termeksor.php'><button>Vissza</button></a>";
+            echo "<p Class=\"endmessage\">Sikeres módosítás \t
+            <a href='termeksor.php'><button>Vissza</button></a></p>";
         }
         elseif(isset($_POST['delete'])){
             $warehouseClass->termekdelete();
-            echo "Sikeres Törlés \t
-            <a href='termeksor.php'><button>Vissza</button></a>";
+            echo "<p Class=\"endmessage\">Sikeres Törlés \t
+            <a href='termeksor.php'><button>Vissza</button></a></p>";
         }
         elseif(isset($_POST['hozza'])){
             require_once "termekbeiras.php";
         }
         elseif(isset($_POST['gomb2'])){
             $warehouseClass->termekfeltoltes();
-            echo "Sikeres Hozzáadás \t
-            <a href='termeksor.php'><button>Vissza</button></a>";
+            echo "<p Class=\"endmessage\">Sikeres Hozzáadás \t
+            <a href='termeksor.php'><button>Vissza</button></a></p>";
         }
         else{
              echo $warehouseClass->termeksor();
