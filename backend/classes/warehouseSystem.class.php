@@ -89,4 +89,41 @@ class WarehouseSystem extends Database{
         $this->connProduct->query($sql);
         
     }
+    function newOrder(){
+        $sql = "SELECT rendelesid,rendelesdatum FROM `rendeles` WHERE 1";
+        $result=$this->connProduct->query($sql);
+        $is_within_week = 0;
+        $respons = "
+        <div id=\"newOrderThisWeek\" class=\"m-auto mt-3\">
+            <p>A héten leadott rendelések: </p>
+            <hr>
+        ";
+        if($result->num_rows>0){
+            while($row = $result->fetch_assoc()){  
+                $temp = $row['rendelesdatum'];
+                $timestamp_from_database = strtotime($temp);
+                $timestamp_today = time();
+                $difference_in_seconds = $timestamp_today - $timestamp_from_database;
+                $days_difference = floor($difference_in_seconds / (60 * 60 * 24));
+                if ($days_difference <= 7) {
+                    $respons .="
+                        <div class=\"newOrderItem\">
+                            <p>Rendelés id: $row[rendelesid]</p>
+                            <p>Rendelés dátuma: $row[rendelesdatum]</p>
+                        </div>
+                        <br>
+                    ";
+                    $is_within_week++;
+                }
+            } 
+        } 
+        if($is_within_week==0){
+            $respons.="
+            <div class=\"newOrderItem\">
+                <p>A héten nem adtak le rendelést!</p>
+            </div>";
+        }
+        $respons .= "</div>";
+        return $respons;
+    }
 }?>

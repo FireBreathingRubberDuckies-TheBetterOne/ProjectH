@@ -2,62 +2,82 @@
 class OrderHandling extends Database{
 
     function rendelessor(){
-        $sql = "SELECT rendeles.rendelesid,rendeles.rendelesdatum,tetelek.mennyiseg,termekek.termnev,vasarlo.vasarlonev,user.username\n"
-        . "FROM `rendeles` JOIN vasarlo USING(vasarloid)\n"
-        . "JOIN user USING(userid)\n"
-        . "JOIN tetelek USING(rendelesid)\n"
-        ."JOIN termekek USING(termekid)\n"
-        ."GROUP BY rendeles.rendelesid\n";
-        $response = null;
-            $result = $this->connProduct->query($sql);
-            if($result->num_rows>0){
-                $response="
-            <table>
-            <tr>";
-                    
-                $response.="
-                <td>Rendelés száma</td>
-                <td>Termék/ek</td>
-                    <td>Mennyiség</td>
-                    <td>Rendelés dátuma</td>
-                    <td>Vásárló neve</td>
-                    <td>Felhasználó neve</td>
-                    </tr>";
-                    while($row = $result->fetch_assoc()){
-                    $response.= "<tr>
-                        <td>".$row["rendelesid"]."</td><td>";
-                        $sql2 = "SELECT termekek.termnev,tetelek.mennyiseg\n"
-
-                        . "FROM `rendeles` JOIN vasarlo USING(vasarloid)\n"
-                        . "JOIN user USING(userid)\n"
-                        . "JOIN tetelek USING(rendelesid)\n"
-                        ."JOIN termekek USING(termekid)\n"
-                        ."WHERE rendeles.rendelesid=$row[rendelesid]\n";
-
-                        $result2 = $this->connProduct->query($sql2);
-                            if($result->num_rows>0){
-                                $mennyiseg="";
-                                while($row2 = $result2->fetch_assoc()){
-                                $response.= $row2["termnev"]."<br>";
-                                $mennyiseg.=$row2["mennyiseg"]."<br>";
-                                }
-                                $response.=" </td><td>$mennyiseg";
-                            }
+        $response="
+                <div id=\"orders\">
+                        <div class=\"row\" id=\"orderHeader\">
+                            <div class=\"col\">Rendelés száma</div>
+                            <div class=\"col\">Termék ISO kód</div>
+                            <div class=\"col\">Termék név</div>
+                            <div class=\"col\">Forgalmazó</div>
+                            <div class=\"col\">Mennyiség</div>
+                            <div class=\"col\">Rendelés dátuma</div>
+                            <div class=\"col\">Vásárló neve</div>
+                            <div class=\"col\">Felhasználó neve</div>
+                        </div>
+                        <hr>";
                         
-                    $response.="</td>
-                        <td>".$row["rendelesdatum"]."</td>
-                        <td>".$row["vasarlonev"]."</td>
-                        <td>".$row["username"]."</td></tr>";
-                    
-                    }
-                    $response.= "</table>";
-                    
-                    
-                    return $response;
+        $sql = "SELECT * FROM `rendeles` WHERE 1";
+
+        $result = $this->connProduct->query($sql);
+        if($result->num_rows>0){
+            while($row = $result->fetch_assoc()){
+                $teszt = $this->orderLoader($row["rendelesid"]);
+                $response .= $teszt."<hr>";
             }
-            else{
-                return "Nem található rendelés az adatbázisban! ";
+            return $response;
+        }
+        else{
+            $response .= "
+                <p>Nem található rendelés az adatbázisban!</p>    
+                    </div>
+                </div>"; 
+            return $response."</div>";
+        }
+    }
+
+    function orderLoader($orderID){
+        $sql = 
+            "SELECT
+            termekek.isokod,
+            termekek.termnev,
+            forgalmazo.forgnev,
+            tetelek.mennyiseg,
+            rendeles.rendelesdatum,
+            vasarlo.vasarlonev,
+            user.username
+            FROM 
+            `vasarlo` JOIN `rendeles` USING(vasarloid)
+            JOIN `user` USING(userid) 
+            JOIN `tetelek` USING (rendelesid)
+            JOIN `termekek` USING (termekid)
+            JOIN `forgalmazo` USING(forgid)
+            WHERE rendeles.rendelesid=$orderID
+            "
+            ;
+        $result = $this->connProduct->query($sql);
+        $order=null;
+        if($result->num_rows>0){
+            while($row = $result->fetch_assoc()){
+                $today = $row['rendelesdatum'];
+
+                    $order .= "
+                <div class=\"row\">
+                    <div class=\"col\">".$orderID."</div>
+                    <div class=\"col\">$row[isokod]</div>
+                    <div class=\"col\">$row[termnev]</div>
+                    <div class=\"col\">$row[forgnev]</div>
+                    <div class=\"col\">$row[mennyiseg] db</div>
+                    <div class=\"col\">$row[rendelesdatum]</div>
+                    <div class=\"col\">$row[vasarlonev]</div>
+                    <div class=\"col\">$row[username]</div>
+                </div>
+                ";
             }
+            return $order;
+        }else{
+            return "Hiba történt a betöltés során!";
+        }
+
     }
 
     function termekker($delete,$tablePart){
@@ -135,6 +155,7 @@ class OrderHandling extends Database{
         }
         return $osszAr*$taxHunagry;
     }
+
     function checkOutValid(){
         if(count($_SESSION['kart'])>0){
             return "<a href='checkout.php' class=\"text-center btn btn-sm\"> Checkout </a>";

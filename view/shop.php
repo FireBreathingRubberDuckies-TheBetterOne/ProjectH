@@ -10,9 +10,7 @@
 <body class="d-flex flex-column min-vh-100" >
     <?php require_once __ROOT__."/layout/uniLayout/menu.php";?>
     <div id="main">
-        <?php
-            echo $prodLoadClass->loader();
-        ?>  
+        <?php  echo $prodLoadClass->loader(true); ?>
     </div>
      <?php require_once __ROOT__.'\layout\uniLayout\footer.php';?>
 </div>

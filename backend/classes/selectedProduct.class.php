@@ -6,51 +6,55 @@ class SelectedProduct extends Database
     {
         if ($termekID==NULL)
         {
-            return;
+            return "<div class=\"d-flex min-vh-100 justify-content-center\" >
+            <div class=\"mx-auto my-auto\" id=\"confirmWindow\">
+                <h3>Hibatörtént a betöltés fojamán!</h3>
+                <a class=\"m-auto\" href='http://localhost/ProjectH/view/shop.php'><button>Vissza</button></a>
+            </div>
+          </div> ";
         }
-        
         $sql = null;
-        $sql = "SELECT * FROM `termekek` WHERE `isokod` = '$termekID'";
+        $sql = "SELECT * FROM `termekek` JOIN `forgalmazo` WHERE `isokod` = '$termekID'";
         $result = $this->connProduct->query($sql);
         $row = $result->fetch_assoc();
 
         file_put_contents(__ROOT__ . '/backend/tempProductData.json', json_encode($row), FILE_USE_INCLUDE_PATH);
-         //echo __ROOT__;
-        var_dump($row);
         $pdTable = "
-        <div id=\"productShowcase\">
-            <div class=\"container\">
-            <div class=\"row\">
-             <div class=\"col-6\">
-             <div id=\"productShowcaseImage\" class=\"d-flex justify-content-center\">
-                <div  class='h-100'><img src=\"".$this->properPicture($row['kep'])."\"></div>
-            </div> 
-            </div>  
-            <div class=\"col-6\">
-            <div id=\"productShowcaseInfo\">
-            <form action=\"http://localhost/ProjectH/backend/cartContent.php\" method=\"post\">
-            <ul>
-                                    <li id=\"space\"></li>
-                                    <li class=\"listItem\" name=\"isoCode\">$row[isokod]</li>
-                                    <li id=\"space\"></li>
-                                    <li class=\"listItem\" name=\"productName\">$row[termnev]</li>
-                                    <li id=\"space\"></li>
-                                    <li class=\"listItem\" name=\"productPrice\">$row[ar] Ft</li>
-                                    <li id=\"space\"></li>
-                                        <button type=\"submit\" class=\"proSub\">Kosárba</button>
-                                        <input type=\"number\" min=\"1\" max=\"99\" value=\"1\" id=\"itemQuantity\" name=\"itemQuantity\">
-                                    </ul>
+        <div class=\"d-flex min-vh-100 justify-content-center\">
+       s <div id=\"productShowcase\"  >
+                            <div class=\"container\">
+                                <div class=\"row\">
+                                    <div class=\"col-lg-6 col-md-12\">
+                                        <div id=\"productShowcaseImage\" class=\"d-flex justify-content-center\">
+                                        <div class=' m-auto'><img src=\"".$this->properPicture($row['kep'])."\"></div>
+                                    </div> 
+                            </div>  
+                            <div class=\"col-lg-6 col-md-12 d-flex justify-content-center\">
+                                <div id=\"productShowcaseInfo\">
+                                    <form action=\"http://localhost/ProjectH/backend/cartContent.php\" method=\"post\">
+                                        <div class=\"listItem\">
+                                            <div name=\"isoCode\">ISO kód: $row[isokod]</div>
+                                            <div name=\"productName\">$row[termnev]</div>
+                                            <div name=\"productPrice\">Nettó ár: $row[ar] Ft</div>
+                                            <div name=\"bruttoAr\">Bruttó ár: ".$row['ar']*1.27." Ft</div>
+                                            <div name=\"productCompany\">Forgamlmazó: $row[forgnev]</div>
+                                        </div>
+                                        <div id=\"putIn\">
+                                                <button type=\"submit\" class=\"proSub\">Kosárba</button>
+                                                <input type=\"number\" min=\"1\" max=\"99\" value=\"1\" id=\"itemQuantity\" name=\"itemQuantity\">
+                                                <lable for=\"itemQuantity\">Darab</lable>
+                                        </div>
                                     </form>
+                                </div>
                             </div>
-                        </div>
-                            <div>
-                                <div id=\"productShowcaseDescription\">
-                                <p>$row[leiras]</p>
-                            </div>
+                        <div>
+                        <div id=\"productShowcaseDescription\">
+                            <p>$row[leiras]</p>
                         </div>
                     </div>
+                </div>
             </div>
-        </div>
+        </div></div>
         ";
         return $pdTable;
     }

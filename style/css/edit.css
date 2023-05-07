@@ -5,7 +5,6 @@
 .deleteButton{
     background-color: red;
     color: aliceblue;
-    border-radius: 10px;
 }
 .trHead
 {
@@ -21,4 +20,19 @@ td{
 .endmessage
 {
     color: aliceblue;
+}
+
+#orders{
+    padding: 15px;
+    background-color: #4a5063;
+    border: 1px solid white;
+    width: 90%;
+    color: white;
+    margin: auto;
+}
+#orders:nth-child(even){
+    background-color: #4a5063;
+}
+#orders:nth-child(odd){
+    background-color: #2a2f40;
 }
