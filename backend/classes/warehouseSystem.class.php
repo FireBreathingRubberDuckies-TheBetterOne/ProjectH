@@ -29,12 +29,10 @@ class WarehouseSystem extends Database{
             </form>
             </td>
             </tr>";
-            
             while($row = $result->fetch_assoc()){   
                 $tableReturn.=
                   "<form action='#' method='post'>
                  <tr>
-                            
                            <td>
                         
                            <input type='text' name='termnev' value='".$row['termnev']."' readonly>
@@ -76,8 +74,6 @@ class WarehouseSystem extends Database{
         $leiras=filter_input(INPUT_POST,"leiras2");
         $mennyiseg=filter_input(INPUT_POST,"mennyiseg2");
         
-       
-        
         $sql = "UPDATE `termekek` SET  `termnev`=\"$termnev\",`ar`=\"$ar\",`mennyiseg`=\"$mennyiseg\",`leiras`=\"$leiras\" WHERE termekid=".$termekid." ";
         $this->connProduct->query($sql);
     }
@@ -89,6 +85,7 @@ class WarehouseSystem extends Database{
         $this->connProduct->query($sql);
         
     }
+
     function newOrder(){
         $sql = "SELECT rendelesid,rendelesdatum FROM `rendeles` WHERE 1";
         $result=$this->connProduct->query($sql);

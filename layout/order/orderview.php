@@ -9,10 +9,9 @@
  <body>
 <?php require_once __ROOT__."/layout/uniLayout/menu.php";?>
     <div>
-
         <?php
- echo $orderHandlingClass->rendelessor(true);
- ?>
+            echo $orderHandlingClass->rendelessor();
+        ?>
  </div>
 <?php require_once __ROOT__.'\layout\uniLayout\footer.php';?>
 </body>

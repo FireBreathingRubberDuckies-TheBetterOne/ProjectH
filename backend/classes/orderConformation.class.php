@@ -12,14 +12,11 @@ class OrderConformation extends Database {
         $row = $result->fetch_assoc();
         $orderID = $row['rendelesid'];
 
-        //SELECT `rendelesid` FROM `rendeles` Join `vasarlo` USING(vasarloid) WHERE `vasarloid`=51  ORDER BY  `rendelesdatum` DESC, `rendelesid` DESC LIMIT 1;
-
-        $sqlLastOrder = "";
         for($i=0;$i<count($kart);$i++){
            $tempItem = $_SESSION['kart'][$i]['item'];
            $tempQunatity = $_SESSION['kart'][$i]['quantity'];
 
-           $sql = "INSERT INTO `tetelek`(`rendelesid`, `termekid`, `mennyiseg`) VALUES ($orderID,$tempItem,$tempItem)";
+           $sql = "INSERT INTO `tetelek`(`rendelesid`, `termekid`, `mennyiseg`) VALUES ($orderID,$tempItem,$tempQunatity)";
            $this->connProduct->query($sql);
         }
 

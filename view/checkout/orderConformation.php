@@ -11,7 +11,7 @@
         <form action="http://localhost/ProjectH/backend/orderData.php" method="post">
             <div class="row">
                 <div class="col-7">
-                    <?php echo $orderHandlingClass->termekker(false, false,false); ?>
+                    <?php echo $orderHandlingClass->termekker(false, false); ?>
                 </div>
                 <div class="col-5" id="rendelo">
                     <div>

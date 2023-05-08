@@ -39,6 +39,9 @@ img{
     margin: auto;
     width: 90%;
 }
+#main img{
+    max-height: 300px;
+}
 
 #checkOut{
     width: 100%;

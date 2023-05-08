@@ -4,9 +4,7 @@
 
     $userConfirm = $_POST['buyerConfirm'];
     $warehouseConfirm = $_POST['raktarConfirm'];
-    // $accountConfirm = $_POST['szamlaszamConfirm'];
 
-    $tetelekSQL = "INSERT INTO `tetelek`(`rendelesid`, `termekid`, `mennyiseg`) VALUES ('[value-1]','[value-2]','[value-3]')";
     $vasarloSQL = "INSERT INTO `vasarlo`(`vasarlonev`, `szallitasicim`) VALUES ('$userConfirm','$warehouseConfirm')";
 
     $orderConfomationCLass->buyerToDb($vasarloSQL);

@@ -72,11 +72,12 @@ class SelectedProduct extends Database
         array_push($_SESSION['kart'], $obj);
     }
     function properPicture($img){
-        if($img==null){
-            return "http://localhost/ProjectH/pictures/alap.jpg";
+        $path = __ROOT__."\pictures\\".$img.".jpg";
+        if($img!=null && file_exists($path)){
+            return "http://localhost/ProjectH/pictures/".$img.".jpg";
         }
         else{
-            return "http://localhost/ProjectH/pictures/".$img.".jpg";
+            return "http://localhost/ProjectH/pictures/alap.jpg";
         }
     }
 }

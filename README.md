@@ -1,12 +1,12 @@
-# 1.2.0.0
+# 1.2.0.2
 
-    - index oldalon kettő új megjelnés
-        - $warehouseClass->newOrder(): lekéri az adatbázisból hogy az elmult    héten került be új adat az adtbázisba.
-        - $prodLoadClass->loader(false): Csak azokat az iteemekt írja ki amikől vagy kevesebb mint 01 db-van vagy 0 darab van
+    Végső patch
 
-    - $prodLoadClass->loader() változások
-        - mostmár a meghívás során vár egy értéket: igaz hamis
-        - Igaz érték: a katalógus fülön használjuk. Ha igaz értékkel hívjuk meg a fügvényt akkor minden elemet ami szerepel az adatbázisban
-        - Hamis érték: az index oldalon használjuk. Ha hamis értékkel hívjuk meg akkor csak azokat írja ki ha 10 vagy 0 darba van raktráon.
+    - checkout.php: - A raktárak neve át lett írva hogy elkerüljönk lehetséges problémákat adatbevitelkor az adatbázba.
+
+    - a termékek képi feltöltődtek
+        - az adatbázisban a nevek meg vannak rendesen adva
+    
+    - az orderHandeling.class.php-ban a rendelessor() és a orderLoader() fügvnéynek mostmár mejelenítik a raktárat is amibe a rendelés le lett adva
     
 

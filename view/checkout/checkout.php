@@ -19,9 +19,9 @@
                 <td>
                     <select name="raktar" id="raktar" class="posi" required>
                     <option value="" selected disabled hidden>Choose here</option>
-                    <option value="debrecenKertvarosRakatr">Debrecen Kerváros Raktár</option>
-                    <option value="jozsatekejRaktar">Józsatelek Raktár</option>
-                    <option value="EpreskertRaktar">Epreskert Raktár</option>
+                    <option value="Debrecen-Kerváros-Raktár">Debrecen Kerváros Raktár</option>
+                    <option value="Tüskevár-Raktár">Tüskevár Raktár</option>
+                    <option value="Epreskert-Raktár">Epreskert Raktár</option>
                     </select>
                 </td>
             </tr>
@@ -29,9 +29,6 @@
                 <td colspan="2"><input type="submit" value="Megrendel" class="order"></td>
             </tr>
              </table>
-
-
-            
         </form>
     </div>
     <?php require_once __ROOT__.'\layout\uniLayout\footer.php';?>

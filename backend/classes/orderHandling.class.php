@@ -9,6 +9,7 @@ class OrderHandling extends Database{
                             <div class=\"col\">Termék ISO kód</div>
                             <div class=\"col\">Termék név</div>
                             <div class=\"col\">Forgalmazó</div>
+                            <div class=\"col\">Raktár</div>
                             <div class=\"col\">Mennyiség</div>
                             <div class=\"col\">Rendelés dátuma</div>
                             <div class=\"col\">Vásárló neve</div>
@@ -41,6 +42,7 @@ class OrderHandling extends Database{
             termekek.isokod,
             termekek.termnev,
             forgalmazo.forgnev,
+            vasarlo.szallitasicim,
             tetelek.mennyiseg,
             rendeles.rendelesdatum,
             vasarlo.vasarlonev,
@@ -58,14 +60,13 @@ class OrderHandling extends Database{
         $order=null;
         if($result->num_rows>0){
             while($row = $result->fetch_assoc()){
-                $today = $row['rendelesdatum'];
-
                     $order .= "
                 <div class=\"row\">
                     <div class=\"col\">".$orderID."</div>
                     <div class=\"col\">$row[isokod]</div>
                     <div class=\"col\">$row[termnev]</div>
                     <div class=\"col\">$row[forgnev]</div>
+                    <div class=\"col\">$row[szallitasicim]</div>
                     <div class=\"col\">$row[mennyiseg] db</div>
                     <div class=\"col\">$row[rendelesdatum]</div>
                     <div class=\"col\">$row[vasarlonev]</div>
@@ -80,9 +81,9 @@ class OrderHandling extends Database{
 
     }
 
-    function termekker($delete,$tablePart){
+    function termekker($delete,$formPart){
         $dinamicTable =null;
-        if($tablePart){
+        if($formPart){
             $dinamicTable = 
             "<form action='#' method='post'>
                 <div class=\"container\" id=\"checkOut\">";
@@ -110,7 +111,7 @@ class OrderHandling extends Database{
                 }
             }   
         }
-        if($tablePart){
+        if($formPart){
             $dinamicTable .="</div></form>";
         }
         return $dinamicTable;
@@ -130,7 +131,7 @@ class OrderHandling extends Database{
             return header("Location: http://localhost/ProjectH/view/checkout/shopingCart.php");
         }
         else if(isset($_SESSION['kart'])&& !empty($_SESSION['kart'])){   
-                return $this->termekker(true,true,true);
+                return $this->termekker(true,true);
         }
         else{
             return "<p style=\"coolor: white\">Kosara üres</p>" ;
