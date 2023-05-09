@@ -1,14 +1,12 @@
-# 0.3.1
-Átrendezve a mappa kiosztás. 
+# 1.2.0.2
 
-- backend:  ide kerünlnek azok a dolgok amik nem jelennek meg az oldalon. Csak a háttérben dolgoznak mintpl a database.php
+    Végső patch
 
-- css:      formázos kerülnek ide
+    - checkout.php: - A raktárak neve át lett írva hogy elkerüljönk lehetséges problémákat adatbevitelkor az adatbázba.
 
-- layout:   olyan filok amik valamien megjelenés biztosítanak pl: menu.php.   
-
-- view:     amikor rákattintunk egy gombra az oldalon a rá koreszponzív oldal nyílik meg pl: shop.php a 'Shop' gomb alatt
-
-TOvábbá mostmár style.css formázás működik midenhol ahova a head.php-t behívjuk
-
+    - a termékek képi feltöltődtek
+        - az adatbázisban a nevek meg vannak rendesen adva
+    
+    - az orderHandeling.class.php-ban a rendelessor() és a orderLoader() fügvnéynek mostmár mejelenítik a raktárat is amibe a rendelés le lett adva
+    
 

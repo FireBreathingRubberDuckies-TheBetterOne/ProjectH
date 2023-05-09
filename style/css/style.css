@@ -1,0 +1,101 @@
+@import 'loginstyle.css';
+@import 'shop.css';
+@import 'product.css';
+@import 'edit.css';
+
+body{
+    background: #252830;
+}
+html{
+    height: 100%;
+}
+img{
+    width: 300px;
+}
+
+#outOfStock{
+    color: red;
+}
+#uniFooter{
+    margin-top: auto;
+    width: 100%;
+}
+
+#itemNumber{
+    width: 10px;
+    height: 10px;
+    color: white;
+}
+
+#orderListing{
+    box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    border: 1px solid black;
+    background-color: #2a2f40;
+    width: 80%;
+    min-height: 300px;
+}
+
+#main{
+    margin: auto;
+    width: 90%;
+}
+#main img{
+    max-height: 300px;
+}
+
+#checkOut{
+    width: 100%;
+    background-color: white;
+}
+
+.rowItem{
+    border: 1px solid black;
+
+}
+
+#navBar a{
+    text-decoration: none;
+}
+#termekidRemove
+{
+    background-color:red;
+    color: aliceblue;
+    margin: auto;
+    border-radius: 10px;
+}
+.cartItems{
+    background-color: #2a2f40;
+    color: greenyellow;
+}
+.NettoBrutto{
+    color: aliceblue;
+}
+#confirmWindow{
+    background-color: #4a5063;
+    padding: 25px;
+    border: 1px solid black;
+    box-shadow: #252830;
+}
+#selProdLi{
+    list-style-type: none;
+}
+
+#newOrderThisWeek{
+    padding: 10px;
+    color: white;
+    border: 1px solid white;
+    background-color: #2a2f40;
+    width: 80%;
+}
+.newOrderItem p{
+    padding: 0;
+    margin: 0;
+    margin-left: 30px;
+}
+#logInUser{
+    margin-top: 5px;
+    color: white;
+    padding: 10px;
+    border: 1px solid black;
+    background-color: #2a2f40;
+}

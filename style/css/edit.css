@@ -1,0 +1,38 @@
+.ProductTable{
+    background-color: #2a2f40;
+    margin: auto;
+}
+.deleteButton{
+    background-color: red;
+    color: aliceblue;
+}
+.trHead
+{
+    color: white;
+}
+td{
+    border: black 1px solid;
+    padding: 5px;
+}
+.BackButton{
+    float: right;
+}
+.endmessage
+{
+    color: aliceblue;
+}
+
+#orders{
+    padding: 15px;
+    background-color: #4a5063;
+    border: 1px solid white;
+    width: 90%;
+    color: white;
+    margin: auto;
+}
+#orders:nth-child(even){
+    background-color: #4a5063;
+}
+#orders:nth-child(odd){
+    background-color: #2a2f40;
+}
